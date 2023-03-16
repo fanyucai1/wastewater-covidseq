@@ -5,11 +5,11 @@
     Variants Being Monitored (VBM)
     https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
 
-1   N的含量要小于1% 长度低于29K的肯定不行的，如果没有明确病人信息的序列也可以去掉
+1.   N的含量要小于1% 长度低于29K的肯定不行的，如果没有明确病人信息的序列也可以去掉
 ::
     2020-Noisy genome data and faulty clade statistics undermine conclusions on SARS-CoV-2 evolution and strain typing in the Brazilian epidemy: A Technical Note
 
-2   We found that detection of all low-frequency variants at an abundance of 10, 5, 3, and 1%, requires at least a sequencing coverage of 250, 500, 1500, and 10,000×, respectively
+2.   We found that detection of all low-frequency variants at an abundance of 10, 5, 3, and 1%, requires at least a sequencing coverage of 250, 500, 1500, and 10,000×, respectively
 ::
     2021-Strategy and Performance Evaluation of Low-Frequency Variant Calling for SARS-CoV-2 Using Targeted Deep Illumina Sequencing
 
