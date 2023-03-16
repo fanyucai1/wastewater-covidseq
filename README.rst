@@ -46,3 +46,15 @@
 ::
 
     Kayikcioglu T, Amirzadegan J, Rand H, et al. Performance of methods for SARS-CoV-2 variant detection and abundance estimation within mixed population samples[J]. PeerJ, 2023, 11: e14596.
+
+8.  waste_water metagenomics
+::
+
+    Wyler E, Lauber C, Manukyan A, et al. Comprehensive profiling of wastewater viromes by genomic sequencing[J]. bioRxiv, 2022: 2022.12. 16.520800.
+
+9.  Review paper
+::
+
+    Tamáš M, Potocarova A, Konecna B, et al. Wastewater Sequencing—An Innovative Method for Variant Monitoring of SARS-CoV-2 in Populations[J]. International Journal of Environmental Research and Public Health, 2022, 19(15): 9749.
+
+
