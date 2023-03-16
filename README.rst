@@ -52,27 +52,3 @@ d.丰度评估（仅新冠）
 Download software:
 https://github.com/lindenb/jvarkit
 
-conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/pkgs/main/
-conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/pkgs/free/
-conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/cloud/conda-forge/
-conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/cloud/msys2/
-conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/cloud/bioconda/
-conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/cloud/menpo/
-conda config --set show_channel_urls yes
-
-# for linux
-./conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
-# for legacy win-64
-./conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/peterjc123/
-以上两条是Pytorch的Anaconda第三方镜像
-
-conda config --set show_channel_urls yes
-
-conda install -c bioconda htslib ivar freyja
-
-./conda config --add channels defaults
-./conda config --add channels bioconda
-./conda config --add channels conda-forge
-
-
-GIS
