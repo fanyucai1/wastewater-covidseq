@@ -6,8 +6,7 @@
 
 https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
 
-GIS下载数据过滤原则
-==================================
+**GIS下载数据过滤原则**
 
 1. N的含量要小于1% 长度低于29K的肯定不行的，如果没有明确病人信息的序列也可以去掉
 ::
