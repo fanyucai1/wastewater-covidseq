@@ -32,29 +32,3 @@
     VLQ:    https://github.com/baymlab/wastewater_analysis
 
     Baaijens J A, Zulli A, Ott I M, et al. Lineage abundance estimation for SARS-CoV-2 in wastewater using transcriptome quantification techniques[J]. Genome biology, 2022, 23(1): 236.
-
-
-
-7. Nextclade https://docs.nextstrain.org/projects/nextclade/en/stable/index.html
-
-进化分析Nextstain+auspice(进化树可视化)
-
-* auspice https://docs.nextstrain.org/projects/auspice/en/stable/introduction/how-to-run.html
-
-* Nextstain的GISAID筛选（"Augur pipeline”）
-
-    https://docs.nextstrain.org/projects/ncov/en/latest/guides/data-prep/gisaid-full.html
-    https://docs.nextstrain.org/projects/ncov/en/latest/guides/data-prep/gisaid-search.html
-
-
-a.数据质控、去adapter
-
-b.比对bowtie2
-
-c.ivar去引物并生成一致性序列 https://andersen-lab.github.io/ivar/html/manualpage.html
-
-d.丰度评估（仅新冠）
-
-Download software:
-https://github.com/lindenb/jvarkit
-
