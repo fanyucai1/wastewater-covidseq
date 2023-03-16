@@ -1,32 +1,38 @@
-1.  https://www.fda.gov/food/whole-genome-sequencing-wgs-program/wastewater-surveillance-sars-cov-2-variants
+1.  Wastewater Surveillance for SARS-CoV-2 Variants
+::
 
-2.  生信分析
+    https://www.fda.gov/food/whole-genome-sequencing-wgs-program/wastewater-surveillance-sars-cov-2-variants
 
-**CFSAN Wastewater Analysis Pipeline(美国FDA)**
+2.  C-VIEW: COVID-19 VIral Epidemiology Workflow
+::
 
-All variant data was process with C-WAP(**https://github.com/CFSAN-Biostatistics/C-WAP**) which inludes the estimation of relative abundance of SARS-CoV-2 sublineages via the bioinformatics package Freyja(**https://github.com/andersen-lab/Freyja**) By default, Freyja now only includes lineages that are present on pangolin.（**https://github.com/cov-lineages/pangolin**）
+    C-WAP:  https://github.com/CFSAN-Biostatistics/C-WAP
 
-* Designating a reference and NGS data in fastq format
-* Alignment of reads to the reference via Bowtie2
-* Taxonomy check via kraken2
-* Processing of alignment results via samtools
-* Detection of variant positions with ivar
-* Determine composition of variants via kallisto, linear regression, kraken2/bracken and freyja
-* Generate an html and pdf formatted summary of results
+    * Designating a reference and NGS data in fastq format
+    * Alignment of reads to the reference via Bowtie2
+    * Taxonomy check via kraken2
+    * Processing of alignment results via samtools
+    * Detection of variant positions with ivar
+    * Determine composition of variants via kallisto, linear regression, kraken2/bracken and freyja
+    * Generate an html and pdf formatted summary of results
 
-Karthikeyan S, Levy J I, De Hoff P, et al. Wastewater sequencing reveals early cryptic SARS-CoV-2 variant transmission[J]. Nature, 2022, 609(7925): 101-108.
+3.  Estimation of relative abundance
+::
 
+    Freyja: https://github.com/andersen-lab/Freyja
 
-3.  illumina推荐的生信分析流程 筛选GISAID数据筛选
+4.  COJAC - CoOccurrence adJusted Analysis and Calling
+::
 
-    https://github.com/baymlab/wastewater_analysis
-    https://github.com/baymlab/wastewater_analysis/tree/main/manuscript
+    cojac:  https://github.com/cbg-ethz/cojac/
 
-Baaijens J A, Zulli A, Ott I M, et al. Lineage abundance estimation for SARS-CoV-2 in wastewater using transcriptome quantification techniques[J]. Genome biology, 2022, 23(1): 236.
+5.  VLQ: Viral Lineage Quantification
+::
 
-4. https://github.com/fabou-uobaf/VaQuERo
+    VLQ:    https://github.com/baymlab/wastewater_analysis
 
-5. https://github.com/cbg-ethz/cojac/
+    Baaijens J A, Zulli A, Ott I M, et al. Lineage abundance estimation for SARS-CoV-2 in wastewater using transcriptome quantification techniques[J]. Genome biology, 2022, 23(1): 236.
+
 
 
 7. Nextclade https://docs.nextstrain.org/projects/nextclade/en/stable/index.html
