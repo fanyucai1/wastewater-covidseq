@@ -99,6 +99,12 @@
 
     This global dataset contained 2,552 subsampled sequences (full length with Ns <5%) to include 1 unique genome per country or state per week.
 
+    Izquierdo-Lara R, Elsinga G, Heijnen L, et al. Monitoring SARS-CoV-2 circulation and diversity through community wastewater sequencing, the Netherlands and Belgium[J]. Emerging infectious diseases, 2021, 27(5): 1405.
+
+    GISAID considers genomes with length greater than 29,000 nucleotides as complete and assigns the high coverage label when there is less than 1% of undefined bases, less than 0.05% unique amino acid mutations and without insertion or deletion unless verified by the submitter.
+
+    Yu C Y, Wong S Y, Liew N W C, et al. Whole genome sequencing analysis of SARS-CoV-2 from Malaysia: From alpha to Omicron[J]. Frontiers in Medicine, 2022, 9.
+
 17. **Consence seuqence coverage**
 ::
     Lineage/clade analysis of SARS-CoV-2 wastewater samples with >80 % genome coverage was performed using Pangolin and NextClade tools
