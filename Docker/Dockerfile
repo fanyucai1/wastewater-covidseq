@@ -1,7 +1,8 @@
 FROM covlineages/pangolin:latest
-RUN mkdir -p /root/nextclade/ && mkdir -p /root/ref_fasta && mkdir -p /software/
-COPY NC_045512.2.fa /root/ref_fasta/
+RUN mkdir -p /root/nextclade/ && mkdir -p /root/ref_fasta && mkdir -p /software /raw_data /script /outdir /reference/
 COPY jvarkit.jar /software/
+COPY trim_fastq.py /script/
+COPY NC_045512.2.fa /reference/
 RUN conda update -n base -c defaults conda
 RUN conda install -c bioconda nextclade trimmomatic ivar samtools bowtie2 kallisto bcftools minimap2 bbmap
 RUN ln -s /opt/conda/bin/nextclade /root/nextclade/nextclade
