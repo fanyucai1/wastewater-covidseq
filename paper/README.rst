@@ -1,10 +1,3 @@
-0.  abc
-::
-    variant of concern (VOC)
-    variant of interest (VOI)
-    Variants Being Monitored (VBM)
-    https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
-
 1.   N的含量要小于1% 长度低于29K的肯定不行的，如果没有明确病人信息的序列也可以去掉
 ::
     2020-Noisy genome data and faulty clade statistics undermine conclusions on SARS-CoV-2 evolution and strain typing in the Brazilian epidemy: A Technical Note
@@ -43,3 +36,10 @@
     Is high coverage?="TRUE"
     Is complete? ="TRUE"
     N-Content <0.01 ###### $23 <=0.05
+
+10.  abc
+::
+    variant of concern (VOC)
+    variant of interest (VOI)
+    Variants Being Monitored (VBM)
+    https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
