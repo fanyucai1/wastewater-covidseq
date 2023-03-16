@@ -32,3 +32,8 @@
     VLQ:    https://github.com/baymlab/wastewater_analysis
 
     Baaijens J A, Zulli A, Ott I M, et al. Lineage abundance estimation for SARS-CoV-2 in wastewater using transcriptome quantification techniques[J]. Genome biology, 2022, 23(1): 236.
+
+6.  The ViReflow pipeline enables user friendly large scale viral consensus genome reconstruction
+::
+
+    ViReflow:   https://github.com/niemasd/ViReflow
