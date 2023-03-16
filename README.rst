@@ -20,7 +20,9 @@
 3.  Estimation of relative abundance
 ::
 
-    Freyja: https://github.com/andersen-lab/Freyja
+    Freyja:
+            https://github.com/andersen-lab/Freyja
+            https://github.com/andersen-lab/Freyja-data
 
 4.  COJAC - CoOccurrence adJusted Analysis and Calling
 ::
