@@ -10,4 +10,7 @@
 
 2.  build reference index
 ####################################################
-bowtie2-build N
+::
+
+    bowtie2-build /reference/NC_045512.2.fa /reference/NC_045512.2
+    samtools faidx /reference/NC_045512.2.fa
