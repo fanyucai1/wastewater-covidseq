@@ -117,14 +117,16 @@
 
     Crits-Christoph A, Kantor R S, Olm M R, et al. Genome sequencing of sewage detects regionally prevalent SARS-CoV-2 variants[J]. MBio, 2021, 12(1): e02703-20.
 
-19. **VOC/VOI**
+19. **variant of concern (VOC)/variant of interest (VOI)/Variants Being Monitored (VBM)**
 ::
-    variant of concern (VOC)/variant of interest (VOI)/Variants Being Monitored (VBM)
+    https://www.ecdc.europa.eu/en/covid-19/variants-concern
+    https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
 
-        https://www.ecdc.europa.eu/en/covid-19/variants-concern
-        https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
-    CoVariants:
-        https://covariants.org/
-    COVID CG(COVID-19 CoV Genetics):
-        https://covidcg.org
+20. **CoVariants**
+::
+    https://covariants.org/
+
+21. **COVID CG(COVID-19 CoV Genetics)**
+::
+    https://covidcg.org
 
