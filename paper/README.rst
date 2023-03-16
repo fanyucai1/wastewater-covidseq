@@ -1,4 +1,4 @@
-1.   N的含量要小于1% 长度低于29K的肯定不行的，如果没有明确病人信息的序列也可以去掉
+1. N的含量要小于1% 长度低于29K的肯定不行的，如果没有明确病人信息的序列也可以去掉
 ::
     2020-Noisy genome data and faulty clade statistics undermine conclusions on SARS-CoV-2 evolution and strain typing in the Brazilian epidemy: A Technical Note
 
