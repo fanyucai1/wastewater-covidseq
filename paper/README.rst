@@ -1,4 +1,4 @@
-0.  重要概念
+0. 重要概念
 ::
     variant of concern (VOC)
     variant of interest (VOI)
