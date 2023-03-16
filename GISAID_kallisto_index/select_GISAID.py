@@ -80,7 +80,7 @@ for line in infile:
                 outfile1.write("%s\n" % (line))#other(output=1)
                 pangolin[array[13]] = 1
             else:
-                if location not in index[array[13]] and array[13] in voc_id and len(index[array[13]]) <= args.num:#voc list(output different country default:<=5)
+                if location not in index[array[13]] and array[13] in voc_id and len(index[array[13]]) <= args.num:#voc list(output different country default:<=10)
                     index[array[13]].append(location)
                     outfile1.write("%s\n" % (line))
 infile.close()
