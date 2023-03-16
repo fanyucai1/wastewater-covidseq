@@ -33,7 +33,9 @@
 
     Baaijens J A, Zulli A, Ott I M, et al. Lineage abundance estimation for SARS-CoV-2 in wastewater using transcriptome quantification techniques[J]. Genome biology, 2022, 23(1): 236.
 
-6.  The ViReflow pipeline enables user friendly large scale viral consensus genome reconstruction
+6.  SD-COVID-Sequencing
 ::
 
+    SD-COVID-Sequencing: https://github.com/niemasd/SD-COVID-Sequencing/
     ViReflow:   https://github.com/niemasd/ViReflow
+    Moshiri N, Fisch K M, Birmingham A, et al. The ViReflow pipeline enables user friendly large scale viral consensus genome reconstruction[J]. Scientific reports, 2022, 12(1): 5077.
