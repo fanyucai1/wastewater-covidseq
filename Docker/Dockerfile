@@ -1,7 +1,6 @@
 FROM covlineages/pangolin:latest
 RUN mkdir -p /root/nextclade/ && mkdir -p /root/ref_fasta && mkdir -p /software /raw_data /script /outdir /reference/
 COPY jvarkit.jar /software/
-COPY trim_fastq.py /script/
 COPY NC_045512.2.fa /reference/
 RUN conda update -n base -c defaults conda
 RUN conda install -c bioconda nextclade trimmomatic ivar samtools bowtie2 kallisto bcftools minimap2 bbmap
@@ -14,3 +13,4 @@ RUN conda config --add channels bioconda
 RUN conda config --add channels conda-forge
 RUN conda install freyja
 RUN conda env export > freyja-env.yml
+COPY trim_fastq.py /script/
