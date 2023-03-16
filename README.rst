@@ -119,7 +119,12 @@
 
 19. **VOC/VOI**
 ::
-    variant of concern (VOC)
-    variant of interest (VOI)
-    Variants Being Monitored (VBM)
-    https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
+    variant of concern (VOC)/variant of interest (VOI)/Variants Being Monitored (VBM)
+
+        https://www.ecdc.europa.eu/en/covid-19/variants-concern
+        https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
+    CoVariants:
+        https://covariants.org/
+    COVID CG(COVID-19 CoV Genetics):
+        https://covidcg.org
+
