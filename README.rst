@@ -57,4 +57,9 @@
 
     Tamáš M, Potocarova A, Konecna B, et al. Wastewater Sequencing—An Innovative Method for Variant Monitoring of SARS-CoV-2 in Populations[J]. International Journal of Environmental Research and Public Health, 2022, 19(15): 9749.
 
+10. SARS-CoV-2 (Va)riant (Qu)antification in s(E)wage, designed for (Ro)bustness
+::
+
+    VaQuERo v2: https://github.com/fabou-uobaf/VaQuERo
+    Amman F, Markt R, Endler L, et al. Viral variant-resolved wastewater surveillance of SARS-CoV-2 at national scale[J]. Nature Biotechnology, 2022, 40(12): 1814-1822.
 
