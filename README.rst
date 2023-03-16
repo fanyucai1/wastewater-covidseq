@@ -73,3 +73,9 @@
 ::
 
     Bassano I, Ramachandran V K, Khalifa M S, et al. Evaluation of variant calling algorithms for wastewater-based epidemiology using mixed populations of SARS-CoV-2 variants in synthetic and wastewater samples[J]. medRxiv, 2022: 2022.06. 06.22275866.
+
+12. **Lineagespot is a framework written in R, and aims to identify SARS-CoV-2 related mutations based on a single (or a list) of variant(s) file(s)**
+::
+    lineagespot:
+                https://github.com/BiodataAnalysisGroup/lineagespot
+                https://github.com/BiodataAnalysisGroup/lineagespot/blob/master/inst/scripts/raw-data-analysis.md
