@@ -70,3 +70,50 @@
     https://github.com/BiodataAnalysisGroup/lineagespot/blob/master/inst/scripts/raw-data-analysis.md
 
     Pechlivanis N, Tsagiopoulou M, Maniou M C, et al. Detecting SARS-CoV-2 lineages and mutational load in municipal wastewater and a use-case in the metropolitan area of Thessaloniki, Greece[J]. Scientific reports, 2022, 12(1): 2659.
+
+13. **Quality control**
+::
+    QC Metrics                                              Cutoff
+    number of nucleotides with depth <10 (for Illumina)     <3000
+    assembly total length                                   >29400
+    ambiguous Ns                                            <10%
+    assembly mean coverage                                  >25
+
+    Xiaoli L, Hagey J V, Park D J, et al. Benchmark datasets for SARS-CoV-2 surveillance bioinformatics[J]. PeerJ, 2022, 10: e13821.
+
+14. **read coverage >90%**
+::
+    Fontenele R S, Kraberger S, Hadfield J, et al. High-throughput sequencing of SARS-CoV-2 in wastewater provides insights into circulating variants[J]. Water Research, 2021, 205: 117710.
+
+15. **sequence depth**
+::
+    We found that detection of all low-frequency variants at an abundance of 10, 5, 3, and 1%, requires at least a sequencing coverage of 250, 500, 1500, and 10,000×, respectively
+
+    Van Poelvoorde L A E, Delcourt T, Coucke W, et al. Strategy and performance evaluation of low-frequency variant calling for SARS-CoV-2 using targeted deep Illumina sequencing[J]. Frontiers in Microbiology, 2021: 3073.
+
+16. **Select reference from GISAID**
+::
+    N的含量要小于1% 长度低于29K的肯定不行的，如果没有明确病人信息的序列也可以去掉
+
+    Briones M R S, Antoneli F, Ferreira R C, et al. Noisy genome data and faulty clade statistics undermine conclusions on sars-cov-2 evolution and strain typing in the Brazilian epidemy: a technical note[J]. 2020.
+
+    This global dataset contained 2,552 subsampled sequences (full length with Ns <5%) to include 1 unique genome per country or state per week.
+
+17. **Consence seuqence coverage**
+::
+    Lineage/clade analysis of SARS-CoV-2 wastewater samples with >80 % genome coverage was performed using Pangolin and NextClade tools
+
+    Silva C S, Tryndyak V P, Camacho L, et al. Temporal dynamics of SARS-CoV-2 genome and detection of variants of concern in wastewater influent from two metropolitan areas in Arkansas[J]. Science of The Total Environment, 2022, 849: 157546.
+
+18. **genomic positions recommended to be masked from SARS-CoV-2 alignments**
+::
+    https://virological.org/t/masking -strategies-for-sars-cov-2-alignments/480
+
+    Crits-Christoph A, Kantor R S, Olm M R, et al. Genome sequencing of sewage detects regionally prevalent SARS-CoV-2 variants[J]. MBio, 2021, 12(1): e02703-20.
+
+19. **VOC/VOI**
+::
+    variant of concern (VOC)
+    variant of interest (VOI)
+    Variants Being Monitored (VBM)
+    https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
