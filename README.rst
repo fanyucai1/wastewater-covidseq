@@ -15,6 +15,7 @@
     * Detection of variant positions with ivar
     * Determine composition of variants via kallisto, linear regression, kraken2/bracken and freyja
     * Generate an html and pdf formatted summary of results
+
     Karthikeyan S, Levy J I, De Hoff P, et al. Wastewater sequencing reveals early cryptic SARS-CoV-2 variant transmission[J]. Nature, 2022, 609(7925): 101-108.
 
 3.  **Estimation of relative abundance**
@@ -28,6 +29,7 @@
 ::
 
     cojac:  https://github.com/cbg-ethz/cojac/
+
     Jahn K, Dreifuss D, Topolsky I, et al. Early detection and surveillance of SARS-CoV-2 genomic variants in wastewater using COJAC[J]. Nature Microbiology, 2022, 7(8): 1151-1160.
 
 5.  **VLQ: Viral Lineage Quantification**
@@ -42,6 +44,7 @@
 
     SD-COVID-Sequencing: https://github.com/niemasd/SD-COVID-Sequencing/
     ViReflow:   https://github.com/niemasd/ViReflow
+
     Moshiri N, Fisch K M, Birmingham A, et al. The ViReflow pipeline enables user friendly large scale viral consensus genome reconstruction[J]. Scientific reports, 2022, 12(1): 5077.
 
 7.  **Freyja vs kallisto**
@@ -63,6 +66,7 @@
 ::
 
     VaQuERo v2: https://github.com/fabou-uobaf/VaQuERo
+
     Amman F, Markt R, Endler L, et al. Viral variant-resolved wastewater surveillance of SARS-CoV-2 at national scale[J]. Nature Biotechnology, 2022, 40(12): 1814-1822.
 
 11. **Compared the performance of six variant callers (VarScan, iVar, GATK, FreeBayes, LoFreq and BCFtools)**
