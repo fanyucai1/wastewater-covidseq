@@ -77,7 +77,7 @@
 12. **Lineagespot is a framework written in R, and aims to identify SARS-CoV-2 related mutations based on a single (or a list) of variant(s) file(s)**
 ::
     lineagespot:
-                https://github.com/BiodataAnalysisGroup/lineagespot
-                https://github.com/BiodataAnalysisGroup/lineagespot/blob/master/inst/scripts/raw-data-analysis.md
+    https://github.com/BiodataAnalysisGroup/lineagespot
+    https://github.com/BiodataAnalysisGroup/lineagespot/blob/master/inst/scripts/raw-data-analysis.md
 
     Pechlivanis N, Tsagiopoulou M, Maniou M C, et al. Detecting SARS-CoV-2 lineages and mutational load in municipal wastewater and a use-case in the metropolitan area of Thessaloniki, Greece[J]. Scientific reports, 2022, 12(1): 2659.
