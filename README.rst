@@ -55,7 +55,7 @@
 
 10. **SARS-CoV-2 (Va)riant (Qu)antification in s(E)wage, designed for (Ro)bustness**
 ::
-    VaQuERo v2: https://github.com/fabou-uobaf/VaQuERo
+    `VaQuERo v2: <https://github.com/fabou-uobaf/VaQuERo>`_
 
     Amman F, Markt R, Endler L, et al. Viral variant-resolved wastewater surveillance of SARS-CoV-2 at national scale[J]. Nature Biotechnology, 2022, 40(12): 1814-1822.
 
@@ -111,9 +111,7 @@
 
     Silva C S, Tryndyak V P, Camacho L, et al. Temporal dynamics of SARS-CoV-2 genome and detection of variants of concern in wastewater influent from two metropolitan areas in Arkansas[J]. Science of The Total Environment, 2022, 849: 157546.
 
-18. **genomic positions recommended to be masked from SARS-CoV-2 alignments**
-::
-    https://virological.org/t/masking -strategies-for-sars-cov-2-alignments/480
+18. `**genomic positions recommended to be masked from SARS-CoV-2 alignments** <https://virological.org/t/masking>`_
 
     Crits-Christoph A, Kantor R S, Olm M R, et al. Genome sequencing of sewage detects regionally prevalent SARS-CoV-2 variants[J]. MBio, 2021, 12(1): e02703-20.
 
@@ -122,12 +120,8 @@
     https://www.ecdc.europa.eu/en/covid-19/variants-concern
     https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
 
-20. **CoVariants**
-::
-    https://covariants.org/
+20. `**CoVariants** <https://covariants.org/>`_
 
-21. **COVID CG(COVID-19 CoV Genetics)**
-::
-    https://covidcg.org
+21. `**COVID CG(COVID-19 CoV Genetics)** <https://covidcg.org>`_
 
-22. '**PiGx SARS-CoV-2 Wastewater Sequencing Pipeline** <https://github.com/BIMSBbioinfo/pigx_sars-cov-2>'_
+22. `**PiGx SARS-CoV-2 Wastewater Sequencing Pipeline** <https://github.com/BIMSBbioinfo/pigx_sars-cov-2>`_
