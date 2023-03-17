@@ -94,15 +94,19 @@
 ::
     N的含量要小于1% 长度低于29K的肯定不行的，如果没有明确病人信息的序列也可以去掉
 
-    Briones M R S, Antoneli F, Ferreira R C, et al. Noisy genome data and faulty clade statistics undermine conclusions on sars-cov-2 evolution and strain typing in the Brazilian epidemy: a technical note[J]. 2020.
+    [1] Briones M R S, Antoneli F, Ferreira R C, et al. Noisy genome data and faulty clade statistics undermine conclusions on sars-cov-2 evolution and strain typing in the Brazilian epidemy: a technical note[J]. 2020.
 
     This global dataset contained 2,552 subsampled sequences (full length with Ns <5%) to include 1 unique genome per country or state per week.
 
-    Izquierdo-Lara R, Elsinga G, Heijnen L, et al. Monitoring SARS-CoV-2 circulation and diversity through community wastewater sequencing, the Netherlands and Belgium[J]. Emerging infectious diseases, 2021, 27(5): 1405.
+    [2] Izquierdo-Lara R, Elsinga G, Heijnen L, et al. Monitoring SARS-CoV-2 circulation and diversity through community wastewater sequencing, the Netherlands and Belgium[J]. Emerging infectious diseases, 2021, 27(5): 1405.
 
     GISAID considers genomes with length greater than 29,000 nucleotides as complete and assigns the high coverage label when there is less than 1% of undefined bases, less than 0.05% unique amino acid mutations and without insertion or deletion unless verified by the submitter.
 
-    Yu C Y, Wong S Y, Liew N W C, et al. Whole genome sequencing analysis of SARS-CoV-2 from Malaysia: From alpha to Omicron[J]. Frontiers in Medicine, 2022, 9.
+    [3] Yu C Y, Wong S Y, Liew N W C, et al. Whole genome sequencing analysis of SARS-CoV-2 from Malaysia: From alpha to Omicron[J]. Frontiers in Medicine, 2022, 9.
+
+    any sequence of length less than 29,000 nucleotides; any sequences with ambiguous nucleotides in excess of 0.5% of the genome; any sequences with greater than 1% divergence from the longest sampled sequence (Wuhan-Hu- 1); and any sequence with stop codons.
+
+    [4]  Maclean O A ,  Lytras S ,  Weaver S , et al. Natural selection in the evolution of SARS-CoV-2 in bats created a generalist virus and highly capable human pathogen[J]. PLoS Biology, 2021, 19(3):e3001115.
 
 17. **Consence seuqence coverage**
 ::
