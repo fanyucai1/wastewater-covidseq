@@ -124,3 +124,5 @@
 21. `COVID CG(COVID-19 CoV Genetics) <https://covidcg.org>`_
 
 22. `PiGx SARS-CoV-2 Wastewater Sequencing Pipeline <https://github.com/BIMSBbioinfo/pigx_sars-cov-2>`_
+
+23. `National Wastewater Surveillance System (NWSS) <https://www.cdc.gov/nwss/wastewater-surveillance/index.html>`_
