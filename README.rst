@@ -53,9 +53,8 @@
 ::
     Tamáš M, Potocarova A, Konecna B, et al. Wastewater Sequencing—An Innovative Method for Variant Monitoring of SARS-CoV-2 in Populations[J]. International Journal of Environmental Research and Public Health, 2022, 19(15): 9749.
 
-10. **SARS-CoV-2 (Va)riant (Qu)antification in s(E)wage, designed for (Ro)bustness**
+10. SARS-CoV-2 (Va)riant (Qu)antification in s(E)wage, designed for (Ro)bustness `VaQuERo v2: <https://github.com/fabou-uobaf/VaQuERo>`_
 ::
-    `VaQuERo v2: <https://github.com/fabou-uobaf/VaQuERo>`_
 
     Amman F, Markt R, Endler L, et al. Viral variant-resolved wastewater surveillance of SARS-CoV-2 at national scale[J]. Nature Biotechnology, 2022, 40(12): 1814-1822.
 
@@ -120,8 +119,8 @@
     https://www.ecdc.europa.eu/en/covid-19/variants-concern
     https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
 
-20. `**CoVariants** <https://covariants.org/>`_
+20. `CoVariants <https://covariants.org/>`_
 
-21. `**COVID CG(COVID-19 CoV Genetics)** <https://covidcg.org>`_
+21. `COVID CG(COVID-19 CoV Genetics) <https://covidcg.org>`_
 
-22. `**PiGx SARS-CoV-2 Wastewater Sequencing Pipeline** <https://github.com/BIMSBbioinfo/pigx_sars-cov-2>`_
+22. `PiGx SARS-CoV-2 Wastewater Sequencing Pipeline <https://github.com/BIMSBbioinfo/pigx_sars-cov-2>`_
