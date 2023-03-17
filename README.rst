@@ -130,3 +130,4 @@
 ::
     https://covidcg.org
 
+22. '**PiGx SARS-CoV-2 Wastewater Sequencing Pipeline** <https://github.com/BIMSBbioinfo/pigx_sars-cov-2>'_
