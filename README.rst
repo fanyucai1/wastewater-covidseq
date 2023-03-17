@@ -110,7 +110,7 @@
 
     Silva C S, Tryndyak V P, Camacho L, et al. Temporal dynamics of SARS-CoV-2 genome and detection of variants of concern in wastewater influent from two metropolitan areas in Arkansas[J]. Science of The Total Environment, 2022, 849: 157546.
 
-18. `**genomic positions recommended to be masked from SARS-CoV-2 alignments** <https://virological.org/t/masking>`_
+18. `genomic positions recommended to be masked from SARS-CoV-2 alignments <https://virological.org/t/masking>`_
 
     Crits-Christoph A, Kantor R S, Olm M R, et al. Genome sequencing of sewage detects regionally prevalent SARS-CoV-2 variants[J]. MBio, 2021, 12(1): e02703-20.
 
