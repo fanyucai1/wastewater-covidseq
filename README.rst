@@ -126,6 +126,8 @@
 20. `CoVariants <https://covariants.org/>`_
 
 21. `COVID CG(COVID-19 CoV Genetics) <https://covidcg.org>`_
+::
+    Chen A T ,  Altschuler K ,  Zhan S H , et al. COVID-19 CG enables SARS-CoV-2 mutation and lineage tracking by locations and dates of interest[J]. eLife Sciences, 2021, 10.
 
 22. `PiGx SARS-CoV-2 Wastewater Sequencing Pipeline <https://github.com/BIMSBbioinfo/pigx_sars-cov-2>`_
 
