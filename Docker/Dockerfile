@@ -18,3 +18,4 @@ RUN conda config --add channels bioconda
 RUN conda config --add channels conda-forge
 RUN conda install freyja
 RUN conda env export > freyja-env.yml
+RUN conda install -c bioconda openssl=1.0 #fix bug bcftools: error while loading shared libraries: libcrypto.so.1.0.0: cannot open shared object file: No such file or directory

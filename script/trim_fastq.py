@@ -39,12 +39,12 @@ if not os.path.exists(args.outdir):
 # https://github.com/CFSAN-Biostatistics/C-WAP/blob/main/startWorkflow.nf
 # https://github.com/niemasd/SD-COVID-Sequencing/blob/main/scripts/pipeline.sh
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
-
+'''
 #输出最短序列30bp
 cmd="trimmomatic PE -threads 20 %s %s %s_1.fastq.gz %s_1_unpaired.fastq.gz " \
     "%s_2.fastq.gz %s_2_unpaired.fastq.gz " \
     "ILLUMINACLIP:%s:2:30:10:2:keepBothReads " \
-    "SLIDINGWINDOW:4:20 MINLEN:30 LEADING:3 TRAILING:3"%(args.pe1,args.pe2,out,out,out,out,args.adapter)
+    "SLIDINGWINDOW:4:20 MINLEN:30 LEADING:3 TRAILING:3 && rm -rf %s*unpaired.fastq.gz"%(args.pe1,args.pe2,out,out,out,out,args.adapter,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
@@ -53,14 +53,14 @@ cmd="bowtie2 --no-unal --threads %s -x %s -1 %s_1.fastq.gz -2 %s_2.fastq.gz -S %
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
-cmd="samtools sort %s_aligned.sam -o %s_sorted.bam -@ %s && samtools index %s_sorted.bam"%(out,out,args.thread,out)
+cmd="samtools sort %s_aligned.sam -o %s_sorted.bam -@ %s && samtools index %s_sorted.bam && rm -rf %s_aligned.sam"%(out,out,args.thread,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
 # trim primers with ivar (soft clipping)
 # https://andersen-lab.github.io/ivar/html/manualpage.html
 # -e    Include reads with no primers
-cmd="conda activate ivar-env && ivar trim -e -i %s_sorted.bam -b %s -p %s.soft.clipped | tee %s.ivar.stdout && conda deactivate ivar-env"%(out,args.bed,out,out)
+cmd="source activate && conda deactivate && conda activate ivar-env && ivar trim -e -i %s_sorted.bam -b %s -p %s.soft.clipped | tee %s.ivar.stdout && rm -rf %s_sorted.bam"%(out,args.bed,out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 # Generate a tsv file tabulating the number of reads vs trimmer primer name in the bed file
@@ -70,20 +70,22 @@ subprocess.check_call(cmd,shell=True)
 
 ## remove soft-clipped primers
 #https://jvarkit.readthedocs.io/en/latest/Biostar84452/
-cmd="java -jar /software/jvarkit.jar biostar84452 --samoutputformat BAM <(samtools sort %s.soft.clipped.bam) > %s.trimmed.bam"%(out,out)
+cmd="source activate && conda deactivate && samtools sort -o %s.soft.clipped.sort.bam %s.soft.clipped.bam && " \
+    "java -jar /software/jvarkit.jar biostar84452 --samoutputformat BAM %s.soft.clipped.sort.bam -o %s.clipped.bam && " \
+    "samtools sort -o %s.trimmed.bam %s.clipped.bam && rm -rf %s.clipped.bam"%(out,out,out,out,out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
 # extract fastqs
 # https://www.htslib.org/doc/samtools-fasta.html
-cmd="samtools fastq -1 %s.forward.trimmed.fastq -2 %s.reverse.trimmed.fastq -s %s.singles.trimmed.fastq <(samtools sort -n %s.trimmed.bam)"%(out,out,out,out)
+cmd="samtools fastq %s.trimmed.bam >%s.all_reads.fq"%(out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
-
+'''
 # Generate Pile-Up and variantCalling
 # https://github.com/CFSAN-Biostatistics/C-WAP/blob/main/startWorkflow.nf
-# -m    Minimum read depth to call variants (Default: 0)
-cmd="samtools mpileup -A -aa -d 0 -Q 0 -o %s.pile.up --reference %s %s.soft.clipped.bam"%(out,args.reference,out)
+# -m    Minimum read depth to call variants (Default: 10)
+cmd="samtools mpileup -A -aa -d 0 -Q 0 -o %s.pile.up --reference %s %s.soft.clipped.sort.bam"%(out,args.reference,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 cmd="cat %s.pile.up | ivar variants -p %s.rawVarCalls -g %s -r %s -m 10"%(out,out,args.gff,args.reference)
@@ -109,7 +111,7 @@ subprocess.check_call(cmd,shell=True)
 # "-J Include reads with deletions in depth computation."
 # "-q only count reads with base quality greater than or equal to INT"
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
-cmd="samtools depth -J -d 0 -Q 0 -q %s -aa %s.soft.clipped.bam"%(args.min_base_qual,out)
+cmd="samtools depth -J -d 0 -Q 0 -q %s -aa %s.soft.clipped.sort.bam"%(args.min_base_qual,out)
 subprocess.check_call(cmd,shell=True)
 
 
