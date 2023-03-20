@@ -123,7 +123,7 @@
     https://www.ecdc.europa.eu/en/covid-19/variants-concern
     https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
 
-20. `CoVariants <https://covariants.org/>`_
+20. `CoVariants https://covariants.org/ <https://covariants.org/>`_
 
 21. `COVID CG(COVID-19 CoV Genetics) <https://covidcg.org>`_
 ::
@@ -132,3 +132,14 @@
 22. `PiGx SARS-CoV-2 Wastewater Sequencing Pipeline <https://github.com/BIMSBbioinfo/pigx_sars-cov-2>`_
 
 23. `National Wastewater Surveillance System (NWSS) <https://www.cdc.gov/nwss/wastewater-surveillance/index.html>`_
+
+24. `Santiago-Rodriguez T M. The Detection of SARS-CoV-2 in the Environment: Lessons from Wastewater[J]. Water, 2022, 14(4): 599. <https://www.mdpi.com/2073-4441/14/4/599>`_
+::
+    Unlike untargeted high-throughput sequencing, targeted or amplicon-based approaches only require < 1 million reads to gain insights into the SARS-CoV-2 prevalence and variant genomic information.
+    The potential caveat of amplicon-based approaches for SARS-CoV-2 detection is that the genomic ends may not be covered; thus, 100% genome coverage may not be reached.
+    However, genome recovery can usually be attained at around > 99.0%, which may be sufficient for phylogenetic relatedness analyses
+
+25. `Variants located outside of the region targeted by the amplicon panel were filtered out (reference genome positions 1–54 and 29,836–29,903)`
+::
+
+    Gohl D M, Garbe J, Grady P, et al. A rapid, cost-effective tailed amplicon method for sequencing SARS-CoV-2[J]. BMC genomics, 2020, 21(1): 1-10.

@@ -60,7 +60,7 @@ subprocess.check_call(cmd,shell=True)
 # trim primers with ivar (soft clipping)
 # https://andersen-lab.github.io/ivar/html/manualpage.html
 # -e    Include reads with no primers
-cmd="ivar trim -e -i %s_sorted.bam -b %s -p %s.soft.clipped | tee %s.ivar.stdout"%(out,args.bed,out,out)
+cmd="conda activate ivar-env && ivar trim -e -i %s_sorted.bam -b %s -p %s.soft.clipped | tee %s.ivar.stdout && conda deactivate ivar-env"%(out,args.bed,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 # Generate a tsv file tabulating the number of reads vs trimmer primer name in the bed file
