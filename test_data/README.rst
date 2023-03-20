@@ -8,7 +8,7 @@
 
 **project info** ::
 
-    Amplicon_panel          NCBI_bioproject_accession
-    ARTICv4                 PRJNA765612
-    QIAseq DIRECT           PRJNA757447
-    NEB VSS v1a             PRJNA767800, PRJNA757447
+    # Amplicon_panel          NCBI_bioproject_accession
+        ARTICv4                 PRJNA765612
+        QIAseq DIRECT           PRJNA757447
+        NEB VSS v1a             PRJNA767800, PRJNA757447
