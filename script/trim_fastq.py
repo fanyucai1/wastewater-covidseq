@@ -2,23 +2,22 @@
 ##  Fontenele R S, Kraberger S, Hadfield J, et al. High-throughput sequencing of SARS-CoV-2 in wastewater provides insights into circulating variants[J]. Water Research, 2021, 205: 117710.
 ##  Baaijens J A, Zulli A, Ott I M, et al. Lineage abundance estimation for SARS-CoV-2 in wastewater using transcriptome quantification techniques[J]. Genome biology, 2022, 23(1): 236.
 import os
-import sys
 import subprocess
 import argparse
-import re
+import time
 
 parser=argparse.ArgumentParser("A pipeline for lineage abundance estimation from wastewater sequencing data.\nEmail:yucai.fan@illumina.com\n\n")
 parser.add_argument("-p1","--pe1",help="R1 fastq",required=True)
 parser.add_argument("-p2","--pe2",help="R2 fastq",required=True)
-parser.add_argument("-p","--prefix",help="prefix of output",required=True)
 parser.add_argument("-a","--adapter",help="fasta file adapter sequence",required=True)
 parser.add_argument("-i","--index",help="prefix of covidRefSequences wuhan bowtie2 index",required=True)
 parser.add_argument("-r","--reference",help="reference fasta sequence:NC_045512.2")
 parser.add_argument("-g","--gff",help="gff file:NC_045512.2")
 parser.add_argument("-t","--thread",help="number threads",type=int,default=20)
 parser.add_argument("-b","--bed",help="primer bed file",required=True)
-parser.add_argument('--min_base_qual', required=False, type=int, help="Minimum Base Quality for consensus sequence")
-parser.add_argument("-o","--outdir",help="output directory",required=True,default=os.getcwd())
+parser.add_argument('--min_base_qual', required=False, type=int, help="Minimum Base Quality for consensus sequence",default=30)
+parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftime("%Y-%m-%d"))
+parser.add_argument("-o","--outdir",help="output directory",default=os.getcwd())
 args=parser.parse_args()
 
 args.outdir=os.path.abspath(args.outdir)
@@ -29,7 +28,7 @@ args.bed=os.path.abspath(args.bed)
 args.reference=os.path.abspath(args.reference)
 args.gff=os.path.abspath(args.gff)
 
-out=args.outdir+"/qc/"+args.prefix
+out=args.outdir+"/"+args.prefix
 if not os.path.exists(args.outdir):
     subprocess.check_call("mkdir -p %s"%(args.outdir),shell=True)
 
@@ -50,7 +49,7 @@ print(cmd)
 subprocess.check_call(cmd,shell=True)
 
 # align reads with bowtie2 and sort bam with samtools
-cmd="bowtie2 --no-unal --threads %s -x %s -1 %s_1.fastq.gz -2 %s_2.fastq.gz') -S %s_aligned.sam"%(args.thread,out,out,args.index,out)
+cmd="bowtie2 --no-unal --threads %s -x %s -1 %s_1.fastq.gz -2 %s_2.fastq.gz -S %s_aligned.sam"%(args.thread,args.index,out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
@@ -112,5 +111,6 @@ subprocess.check_call(cmd,shell=True)
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
 cmd="samtools depth -J -d 0 -Q 0 -q %s -aa %s.soft.clipped.bam"%(args.min_base_qual,out)
 subprocess.check_call(cmd,shell=True)
+
 
 

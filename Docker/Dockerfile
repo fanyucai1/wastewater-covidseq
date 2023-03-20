@@ -1,9 +1,9 @@
 FROM covlineages/pangolin:latest
-RUN mkdir -p /root/nextclade/ && mkdir -p /root/ref_fasta && mkdir -p /software /raw_data /script /outdir /reference/
+RUN mkdir -p /root/nextclade/ && mkdir -p /root/ref_fasta && mkdir -p /software /raw_data /script /outdir /reference/ /index/
 COPY jvarkit.jar /software/
 COPY NC_045512.2.fa /reference/
 RUN conda update -n base -c defaults conda
-RUN conda install -c bioconda nextclade trimmomatic ivar samtools bowtie2 kallisto bcftools minimap2 bbmap mafft iqtree fastp
+RUN conda install -c bioconda nextclade trimmomatic ivar=1.4 samtools bowtie2 kallisto bcftools minimap2 bbmap mafft iqtree fastp
 RUN conda install -c agbiome cdhit
 RUN ln -s /opt/conda/bin/nextclade /root/nextclade/nextclade
 RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple seaborn matplotlib numpy pysam
@@ -14,4 +14,3 @@ RUN conda config --add channels bioconda
 RUN conda config --add channels conda-forge
 RUN conda install freyja
 RUN conda env export > freyja-env.yml
-COPY trim_fastq.py /script/
