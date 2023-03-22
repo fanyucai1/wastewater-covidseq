@@ -39,7 +39,7 @@ if not os.path.exists(args.outdir):
 # https://github.com/CFSAN-Biostatistics/C-WAP/blob/main/startWorkflow.nf
 # https://github.com/niemasd/SD-COVID-Sequencing/blob/main/scripts/pipeline.sh
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
-'''
+
 #输出最短序列30bp
 cmd="trimmomatic PE -threads 20 %s %s %s_1.fastq.gz %s_1_unpaired.fastq.gz " \
     "%s_2.fastq.gz %s_2_unpaired.fastq.gz " \
@@ -81,7 +81,7 @@ subprocess.check_call(cmd,shell=True)
 cmd="samtools fastq %s.trimmed.bam >%s.all_reads.fq"%(out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
-'''
+
 # Generate Pile-Up and variantCalling
 # https://github.com/CFSAN-Biostatistics/C-WAP/blob/main/startWorkflow.nf
 # -m    Minimum read depth to call variants (Default: 10)
