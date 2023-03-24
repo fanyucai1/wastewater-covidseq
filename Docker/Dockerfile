@@ -6,11 +6,7 @@ RUN cd /software && tar xjvf bcftools-1.17.tar.bz2 && cd bcftools-1.17 && ./conf
 RUN mkdir -p /root/nextclade/ && mkdir -p /root/ref_fasta && mkdir -p /software /raw_data /script /outdir /reference/ /index/
 COPY jvarkit.jar /software/
 RUN conda update -n base -c defaults conda
-RUN conda create -n ivar-env
-RUN conda config --add channels bioconda
-RUN conda install ivar=1.3
-RUN conda env export >ivar-env.yml
-RUN conda install -c bioconda nextclade trimmomatic samtools bowtie2 kallisto minimap2 bbmap mafft iqtree fastp
+RUN conda install -c bioconda ivar=1.3 nextclade trimmomatic bowtie2 kallisto minimap2 bbmap mafft iqtree fastp
 RUN conda install -c agbiome cdhit
 RUN ln -s /opt/conda/bin/nextclade /root/nextclade/nextclade
 RUN pip3 install seaborn matplotlib numpy pysam pandas
@@ -21,3 +17,7 @@ RUN conda create -n freyja-env
 RUN conda config --add channels conda-forge
 RUN conda install -c bioconda freyja
 RUN conda env export > freyja-env.yml
+COPY samtools-1.17.tar.bz2 /software/
+RUN cd /software/ && tar xjvf samtools-1.17.tar.bz2 && cd samtools-1.17 &&  \
+    ./configure --prefix=/software/samtools-v1.17 --without-curses && make -j20 && make install &&  \
+    rm -rf samtools-1.17.tar.bz2 bcftools-1.17.tar.bz2 samtools-1.17

@@ -49,7 +49,7 @@ print(cmd)
 subprocess.check_call(cmd,shell=True)
 
 # align reads with bowtie2 and sort bam with samtools
-cmd="bowtie2 --no-unal --threads %s -x %s -1 %s_1.fastq.gz -2 %s_2.fastq.gz -S %s_aligned.sam"%(args.thread,args.index,out,out,out)
+cmd="bowtie2 --threads %s -x %s -1 %s_1.fastq.gz -2 %s_2.fastq.gz -S %s_aligned.sam"%(args.thread,args.index,out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
@@ -60,7 +60,7 @@ subprocess.check_call(cmd,shell=True)
 # trim primers with ivar (soft clipping)
 # https://andersen-lab.github.io/ivar/html/manualpage.html
 # -e    Include reads with no primers
-cmd="source activate && conda deactivate && conda activate ivar-env && ivar trim -e -i %s_sorted.bam -b %s -p %s.soft.clipped | tee %s.ivar.stdout && rm -rf %s_sorted.bam"%(out,args.bed,out,out,out)
+cmd="ivar trim -e -i %s_sorted.bam -b %s -p %s.soft.clipped | tee %s.ivar.stdout && rm -rf %s_sorted.bam"%(out,args.bed,out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 # Generate a tsv file tabulating the number of reads vs trimmer primer name in the bed file
@@ -111,7 +111,7 @@ subprocess.check_call(cmd,shell=True)
 # "-J Include reads with deletions in depth computation."
 # "-q only count reads with base quality greater than or equal to INT"
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
-cmd="samtools depth -J -d 0 -Q 0 -q %s -aa %s.soft.clipped.sort.bam"%(args.min_base_qual,out)
+cmd="/software/samtools-v1.17/bin/samtools depth -J -d 0 -Q 0 -q %s -aa %s.soft.clipped.sort.bam >%s.depth.txt"%(args.min_base_qual,out,out)
 subprocess.check_call(cmd,shell=True)
 
 

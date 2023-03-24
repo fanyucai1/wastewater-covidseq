@@ -1,6 +1,7 @@
 **shell command** ::
 
     fastq-dump --split-3 --gzip SRR20696395
+    fastq-dump --split-3 --gzip SRR20696400
 
 **reference paper** ::
 
