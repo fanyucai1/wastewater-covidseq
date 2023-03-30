@@ -41,15 +41,14 @@ if not os.path.exists(args.outdir):
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
 
 #输出最短序列30bp
-cmd="trimmomatic PE -threads 20 %s %s %s_1.fastq.gz %s_1_unpaired.fastq.gz " \
-    "%s_2.fastq.gz %s_2_unpaired.fastq.gz " \
-    "ILLUMINACLIP:%s:2:30:10:2:keepBothReads " \
-    "SLIDINGWINDOW:4:20 MINLEN:30 LEADING:3 TRAILING:3 && rm -rf %s*unpaired.fastq.gz"%(args.pe1,args.pe2,out,out,out,out,args.adapter,out)
+cmd="fastp --in1 %s --in2 %s --out1 %s_1.fastq.gz --out2 %s_2.fastq.gz " \
+    "--html %s.html --json %s.json --report_title %s " \
+    "--thread 8 --adapter_fasta %s --length_required 30 --qualified_quality_phred 20"%(args.pe1,args.pe2,out,out,out,out,out,args.adapter)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
 # align reads with bowtie2 and sort bam with samtools
-cmd="bowtie2 --threads %s -x %s -1 %s_1.fastq.gz -2 %s_2.fastq.gz -S %s_aligned.sam"%(args.thread,args.index,out,out,out)
+cmd="bowtie2 --threads %s -x %s -1 %s_1.fastq.gz -2 %s_2.fastq.gz -S %s_aligned.sam && rm -rf %s_1.fastq.gz %s_2.fastq.gz"%(args.thread,args.index,out,out,out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
@@ -70,7 +69,8 @@ subprocess.check_call(cmd,shell=True)
 
 ## remove soft-clipped primers
 #https://jvarkit.readthedocs.io/en/latest/Biostar84452/
-cmd="source activate && conda deactivate && samtools sort -o %s.soft.clipped.sort.bam %s.soft.clipped.bam && " \
+# source activate && conda deactivate
+cmd="/software/samtools-v1.17/bin/samtools sort -o %s.soft.clipped.sort.bam %s.soft.clipped.bam && " \
     "java -jar /software/jvarkit.jar biostar84452 --samoutputformat BAM %s.soft.clipped.sort.bam -o %s.clipped.bam && " \
     "samtools sort -o %s.trimmed.bam %s.clipped.bam && rm -rf %s.clipped.bam"%(out,out,out,out,out,out,out)
 print(cmd)
@@ -78,7 +78,7 @@ subprocess.check_call(cmd,shell=True)
 
 # extract fastqs
 # https://www.htslib.org/doc/samtools-fasta.html
-cmd="samtools fastq %s.trimmed.bam >%s.all_reads.fq"%(out,out)
+cmd="samtools fastq -1 %s.all_reads.fq -2 %s.all_reads.fq -S %s.single.fq %s.trimmed.bam"%(out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
