@@ -40,11 +40,11 @@ shell script ::
 
 **step2:Use Freyja to recover relative lineage abundances(BAM aligned to the Hu-1 reference)**
 
-`Freyja-data:https://github.com/andersen-lab/Freyja-data <https://github.com/andersen-lab/Freyja-data>`_
+Previous versions of Freyja barcodes and metadata files: `Freyja-data <https://github.com/andersen-lab/Freyja-data>`_
 
-`usher_barcodes.csv: https://github.com/andersen-lab/Freyja-data/blob/main/usher_barcodes.csv <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
+associated barcodes: `usher_barcodes.csv <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
 
-`curated_lineages.json: https://github.com/andersen-lab/Freyja-data/blob/main/curated_lineages.json <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
+the most recent metadata: `curated_lineages.json <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
 
     **python3 script/freyja.py**
 
