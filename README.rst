@@ -39,3 +39,14 @@ shell script ::
 
     **python3 script/freyja.py**
 
+shell script ::
+
+    docker run -v /path/to/reference/:/reference \
+    -v /path/to/script/:/script \
+    -v /path/to/outdir/freyja:/outdir/ \
+    -v /path/to/outdir/pre_process/:/raw_data/ \
+    waste_water:latest python3 /script/freyja.py -b /raw_data/SRR20696400.trimmed.bam \
+    -r /reference/NC_045512.2.fa \
+    --barcode /reference/usher_barcodes.csv  \
+    --meta /reference/curated_lineages.json \
+    -o /outdir/ -p SRR20696400 --nb 100

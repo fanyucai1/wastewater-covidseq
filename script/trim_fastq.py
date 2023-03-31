@@ -18,7 +18,7 @@ parser.add_argument("-r","--reference",help="reference fasta sequence:NC_045512.
 parser.add_argument("-g","--gff",help="gff file:NC_045512.2")
 parser.add_argument("-t","--thread",help="number threads",type=int,default=20)
 parser.add_argument("-b","--bed",help="primer bed file",required=True)
-parser.add_argument('--min_base_qual', required=False, type=int, help="Minimum Base Quality for consensus sequence",default=30)
+parser.add_argument('--min_base_qual', required=False, type=int, help="Minimum Base Quality for consensus sequence",default=20)
 parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftime("%Y-%m-%d"))
 parser.add_argument("-o","--outdir",help="output directory",default=os.getcwd())
 args=parser.parse_args()

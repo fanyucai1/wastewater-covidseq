@@ -26,5 +26,5 @@ docker run -v /staging3/fanyucai/waste_water/Freyja-data/:/reference \
 docker run -v /staging3/fanyucai/waste_water/Freyja-data/:/reference \
   -v /staging3/fanyucai/waste_water/Freyja_out:/outdir/ \
   -v /staging3/fanyucai/waste_water/outdir2:/raw_data/ \
-  waste_water sh -c 'activate freyja-env && freyja demix /outdir/test.freyja.variants.tsv /outdir/test.freyja.depths.tsv --barcodes /reference/usher_barcodes.csv --meta /reference/curated_lineages.json --eps 0.0001 --output /outdir/test.demix --confirmedonly && freyja boot /outdir/test.freyja.variants.tsv /outdir/test.freyja.depths.tsv --boxplot pdf --nt 20 --nb 1000 --output_base /outdir/freyja_boot'
+  waste_water sh -c 'freyja demix /outdir/test.freyja.variants.tsv /outdir/test.freyja.depths.tsv --barcodes /reference/usher_barcodes.csv --meta /reference/curated_lineages.json --eps 0.0001 --output /outdir/test.demix --confirmedonly && freyja boot /outdir/test.freyja.variants.tsv /outdir/test.freyja.depths.tsv --boxplot pdf --nt 20 --nb 1000 --output_base /outdir/freyja_boot'
 

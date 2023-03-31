@@ -9,15 +9,15 @@ parser=argparse.ArgumentParser("")
 parser.add_argument("-b","--bam",help="bam file(trimed primer)",required=True)
 parser.add_argument("-r","--ref",help="reference sequence,fasta",required=True)
 parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftime("%Y-%m-%d"))
+parser.add_argument("-o","--outdir",help="output directory",default=os.getcwd())
 parser.add_argument("--barcode",help="usher_barcodes.csv,download:https://github.com/andersen-lab/Freyja-data",required=True)
 parser.add_argument("--meta",help="curated_lineages.json,download:https://github.com/andersen-lab/Freyja-data",required=True)
 parser.add_argument("--minq",help="Minimum base quality score",default=20,type=int)
 parser.add_argument("--eps",help="minimum abundance to include",default=0.001,type=float)
 parser.add_argument("--nb",help="number of bootstraps",default=1000,type=int)
-parser.add_argument("-o",help="output directory",default=os.getcwd())
 args=parser.parse_args()
 
-args.reference=os.path.abspath(args.reference)
+args.ref=os.path.abspath(args.ref)
 args.bam=os.path.abspath(args.bam)
 args.barcode=os.path.abspath(args.barcode)
 args.meta=os.path.abspath(args.meta)
@@ -44,7 +44,7 @@ Options:
   --help           Show this message and exit.
 '''
 
-cmd="freyja variants %s --variants %s.freyja.variants.tsv --depths %s.freyja.depths.tsv --ref %s --minq %s"%(args.bam,out,out,args.reference,args.minq)
+cmd="freyja variants %s --variants %s.freyja.variants.tsv --depths %s.freyja.depths.tsv --ref %s --minq %s"%(args.bam,out,out,args.ref,args.minq)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
@@ -80,6 +80,10 @@ Options:
   --wgisaid           larger library with non-public lineages
   --help              Show this message and exit.
 '''
-cmd="freyja boot %s.freyja.variants.tsv %s.freyja.depths.tsv --nt 24 --nb %s --boxplot pdf --output_base %s.freyja_boot --eps %s"%(out,out,out,args.nb,args.eps)
+cmd="freyja boot %s.freyja.variants.tsv %s.freyja.depths.tsv --nt 24 --nb %s --boxplot pdf --output_base %s.freyja_boot --eps %s"%(out,out,args.nb,out,args.eps)
+print(cmd)
+subprocess.check_call(cmd,shell=True)
+
+cmd="python3 /script/parseFreyjaBootstraps.py %.freyja.demix %s.freyja_boot_lineages.csv %s.freyja_bootstrap.png"%(out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
