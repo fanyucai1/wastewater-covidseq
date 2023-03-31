@@ -1,11 +1,11 @@
 # Email:yucai.fan@illumina.com
-# 2023.03.30
+# 2023.03.31 version:1.0
 
 import os
 import subprocess
 import argparse
 import time
-parser=argparse.ArgumentParser("")
+parser=argparse.ArgumentParser("predict abundance per lineage using freyja\n")
 parser.add_argument("-b","--bam",help="bam file(trimed primer)",required=True)
 parser.add_argument("-r","--ref",help="reference sequence,fasta",required=True)
 parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftime("%Y-%m-%d"))
@@ -84,6 +84,6 @@ cmd="freyja boot %s.freyja.variants.tsv %s.freyja.depths.tsv --nt 24 --nb %s --b
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
-cmd="python3 /script/parseFreyjaBootstraps.py %.freyja.demix %s.freyja_boot_lineages.csv %s.freyja_bootstrap.png"%(out,out,out)
+cmd="python3 /script/parseFreyjaBootstraps.py %s.freyja.demix %s.freyja_boot_lineages.csv %s.freyja_bootstrap.png"%(out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)

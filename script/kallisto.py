@@ -1,10 +1,12 @@
+# Email:yucai.fan@illumina.com
+# 2023.03.31 version:1.0
+
 import os
-import sys
 import subprocess
 import argparse
-import re
 
-parser=argparse.ArgumentParser("")
+
+parser=argparse.ArgumentParser("predict abundance per lineage using kallisto\n")
 parser.add_argument("-f","--fastq",help="fastq files not contains primer",required=True)
 parser.add_argument("-p","--prefix",help="prefix of output",required=True)
 parser.add_argument("-o","--outdir",help="output directory",required=True)
@@ -21,5 +23,5 @@ args.index=os.path.abspath(args.index)
 
 #https://pachterlab.github.io/kallisto/manual
 #output name: abundance.tsv
-cmd="kallisto quant --plaintext -t 20 -i %s -o %s --single -l 300 -s 50  %s "%(args.index,args.outdir,args.fastq)
+cmd="kallisto quant --plaintext -t 24 -i %s -o %s --single -l 300 -s 50  %s"%(args.index,args.outdir,args.fastq)
 subprocess.check_call(cmd,shell=True)

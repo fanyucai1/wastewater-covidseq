@@ -1,3 +1,6 @@
+directory
++++++++++++++++++
+
 #.  learn konwledge: *paper/*
 
 #.  build docker image: *Docker/*
@@ -10,7 +13,8 @@
 
 #.  test shell script: *shell/*
 
-#.  usr guide
+usr guide
+++++++++++++++++++
 
 **step1:Preprocessing sequencing data**
 
@@ -36,7 +40,7 @@ shell script ::
       -i /reference/NC_045512.2 -b /reference/ARTICv4.bed -r /reference/NC_045512.2.fa \
       -g /reference/NC_045512.2.gff3 -o /outdir/ -p SRR20696400
 
-**step2:Run Freyja to recover relative lineage abundances(BAM aligned to the Hu-1 reference)**
+**step2:Use Freyja to recover relative lineage abundances(BAM aligned to the Hu-1 reference)**
 
     **python3 script/freyja.py**
 
@@ -51,3 +55,18 @@ shell script ::
     --barcode /reference/usher_barcodes.csv  \
     --meta /reference/curated_lineages.json \
     -o /outdir/ -p SRR20696400 --nb 100
+
+**step3: Use kallisto to predict abundance per lineage**
+
+    **python3 script/kallisto.py
+
+shell script ::
+
+    docker run -v /staging3/fanyucai/waste_water/reference:/reference \
+    -v /staging3/fanyucai/waste_water/script/:/script \
+    -v /staging3/fanyucai/waste_water/kallisto/:/outdir/ \
+    -v /staging3/fanyucai/waste_water/outdir/pre_process:/raw_data/ \
+    waste_water:latest python3 /script/kallisto.py \
+    -f /raw_data/SRR20696400.resorted.fastq -i /reference/sequences.kallisto_idx \
+    -o /outdir/ -p SRR20696400
+
