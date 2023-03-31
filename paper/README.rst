@@ -55,12 +55,12 @@
 
 10. **SARS-CoV-2 (Va)riant (Qu)antification in s(E)wage, designed for (Ro)bustness** ::
 
-        VaQuERo v2: https://github.com/fabou-uobaf/VaQuERo
-        Amman F, Markt R, Endler L, et al. Viral variant-resolved wastewater surveillance of SARS-CoV-2 at national scale[J]. Nature Biotechnology, 2022, 40(12): 1814-1822.
+    VaQuERo v2: https://github.com/fabou-uobaf/VaQuERo
+    Amman F, Markt R, Endler L, et al. Viral variant-resolved wastewater surveillance of SARS-CoV-2 at national scale[J]. Nature Biotechnology, 2022, 40(12): 1814-1822.
 
 11. **Compared the performance of six variant callers (VarScan, iVar, GATK, FreeBayes, LoFreq and BCFtools)** ::
 
-        Bassano I, Ramachandran V K, Khalifa M S, et al. Evaluation of variant calling algorithms for wastewater-based epidemiology using mixed populations of SARS-CoV-2 variants in synthetic and wastewater samples[J]. medRxiv, 2022: 2022.06. 06.22275866.
+    Bassano I, Ramachandran V K, Khalifa M S, et al. Evaluation of variant calling algorithms for wastewater-based epidemiology using mixed populations of SARS-CoV-2 variants in synthetic and wastewater samples[J]. medRxiv, 2022: 2022.06. 06.22275866.
 
 12. **Lineagespot is a framework written in R, and aims to identify SARS-CoV-2 related mutations based on a single (or a list) of variant(s) file(s)** ::
 
@@ -85,9 +85,9 @@
 
 15. **sequence depth** ::
 
-        We found that detection of all low-frequency variants at an abundance of 10, 5, 3, and 1%, requires at least a sequencing coverage of 250, 500, 1500, and 10,000×, respectively
+    We found that detection of all low-frequency variants at an abundance of 10, 5, 3, and 1%, requires at least a sequencing coverage of 250, 500, 1500, and 10,000×, respectively
 
-        Van Poelvoorde L A E, Delcourt T, Coucke W, et al. Strategy and performance evaluation of low-frequency variant calling for SARS-CoV-2 using targeted deep Illumina sequencing[J]. Frontiers in Microbiology, 2021: 3073.
+    Van Poelvoorde L A E, Delcourt T, Coucke W, et al. Strategy and performance evaluation of low-frequency variant calling for SARS-CoV-2 using targeted deep Illumina sequencing[J]. Frontiers in Microbiology, 2021: 3073.
 
 16. **Select reference from GISAID** ::
 

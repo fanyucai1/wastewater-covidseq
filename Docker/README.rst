@@ -1,4 +1,4 @@
-1.  **software list** ::
+1. **software list** ::
 
         pangolin
         nextclade
@@ -17,15 +17,3 @@
         jvarkit
         freyja
 
-2. **python3 module** ::
-
-    seaborn
-    matplotlib
-    numpy
-    pysam
-    pandas
-3. **build docker shell script** ::
-
-    docker build -t waste_water ./
-
-    docker push waste_water
