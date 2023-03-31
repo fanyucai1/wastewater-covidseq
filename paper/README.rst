@@ -129,9 +129,10 @@
 
     Silva C S, Tryndyak V P, Camacho L, et al. Temporal dynamics of SARS-CoV-2 genome and detection of variants of concern in wastewater influent from two metropolitan areas in Arkansas[J]. Science of The Total Environment, 2022, 849: 157546.
 
-18. `genomic positions recommended to be masked from SARS-CoV-2 alignments <https://virological.org/t/masking>`_
+18. **genomic positions recommended to be masked from SARS-CoV-2 alignments**
 ::
 
+    genomic positions recommended to be masked from SARS-CoV-2 alignments https://virological.org/t/masking
     Crits-Christoph A, Kantor R S, Olm M R, et al. Genome sequencing of sewage detects regionally prevalent SARS-CoV-2 variants[J]. MBio, 2021, 12(1): e02703-20.
 
 19. **variant of concern (VOC)/variant of interest (VOI)/Variants Being Monitored (VBM)**
@@ -140,28 +141,34 @@
     https://www.ecdc.europa.eu/en/covid-19/variants-concern
     https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-classifications.html
 
-20. `CoVariants https://covariants.org/ <https://covariants.org/>`_
+20. **CoVariants**
 ::
 
-21. `COVID CG(COVID-19 CoV Genetics) <https://covidcg.org>`_
+    CoVariants https://covariants.org/
+
+21. **COVID CG(COVID-19 CoV Genetics)**
 ::
 
+    COVID CG(COVID-19 CoV Genetics) https://covidcg.org
     Chen A T ,  Altschuler K ,  Zhan S H , et al. COVID-19 CG enables SARS-CoV-2 mutation and lineage tracking by locations and dates of interest[J]. eLife Sciences, 2021, 10.
 
-22. `PiGx SARS-CoV-2 Wastewater Sequencing Pipeline <https://github.com/BIMSBbioinfo/pigx_sars-cov-2>`_
+22. **PiGx SARS-CoV-2 Wastewater Sequencing Pipeline**
 ::
 
-23. `National Wastewater Surveillance System (NWSS) <https://www.cdc.gov/nwss/wastewater-surveillance/index.html>`_
-::
+    PiGx SARS-CoV-2 Wastewater Sequencing Pipeline https://github.com/BIMSBbioinfo/pigx_sars-cov-2
 
-24. `Santiago-Rodriguez T M. The Detection of SARS-CoV-2 in the Environment: Lessons from Wastewater[J]. Water, 2022, 14(4): 599. <https://www.mdpi.com/2073-4441/14/4/599>`_
+23. **National Wastewater Surveillance System (NWSS)**
+::
+    National Wastewater Surveillance System (NWSS) https://www.cdc.gov/nwss/wastewater-surveillance/index.html
+
+24. **Santiago-Rodriguez T M. The Detection of SARS-CoV-2 in the Environment: Lessons from Wastewater[J]. Water, 2022, 14(4): 599.**
 ::
 
     Unlike untargeted high-throughput sequencing, targeted or amplicon-based approaches only require < 1 million reads to gain insights into the SARS-CoV-2 prevalence and variant genomic information.
     The potential caveat of amplicon-based approaches for SARS-CoV-2 detection is that the genomic ends may not be covered; thus, 100% genome coverage may not be reached.
     However, genome recovery can usually be attained at around > 99.0%, which may be sufficient for phylogenetic relatedness analyses
 
-25. `Variants located outside of the region targeted by the amplicon panel were filtered out (reference genome positions 1–54 and 29,836–29,903)`
+25. **Variants located outside of the region targeted by the amplicon panel were filtered out (reference genome positions 1–54 and 29,836–29,903)**
 ::
 
     Gohl D M, Garbe J, Grady P, et al. A rapid, cost-effective tailed amplicon method for sequencing SARS-CoV-2[J]. BMC genomics, 2020, 21(1): 1-10.
