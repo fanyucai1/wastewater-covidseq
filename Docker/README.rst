@@ -1,4 +1,4 @@
-**software list** ::
+ **software list** ::
 
     pangolin
     nextclade
@@ -15,14 +15,14 @@
     mafft
     iqtree
     jvarkit
-**python3 module** ::
+ **python3 module** ::
 
         seaborn
         matplotlib
         numpy
         pysam
         pandas
-**build docker shell script** ::
+ **build docker shell script** ::
 
     docker build -t waste_water ./
 
