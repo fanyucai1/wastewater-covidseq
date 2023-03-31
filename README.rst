@@ -34,7 +34,7 @@ upload sequence id to GISAID to download fasta sequence ::
 
     python3 script/cd-hit-est.py -f reference/sequence.fna -c 0.995 -o reference/ -p test
 
- build kallisto index ::
+build kallisto index ::
 
     kallisto index -i reference/sequences.kallisto_idx reference/test.fna
 
