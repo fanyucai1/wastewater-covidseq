@@ -11,8 +11,6 @@ directory
 
 #.  download test data: *test_data/*
 
-#.  test shell script: *shell/*
-
 usr guide
 ++++++++++++++++++
 
