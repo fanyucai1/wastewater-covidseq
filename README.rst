@@ -30,7 +30,8 @@ shell script ::
       -v /path/to/script/:/script \
       -v /path/to/test_data:/raw_data/ \
       -v /path/to/outdir/pre_process/:/outdir/ \
-      waste_water:latest python3 /script/trim_fastq.py -p1 /raw_data/SRR20696400_1.fastq.gz -p2 /raw_data/SRR20696400_2.fastq.gz \
+      waste_water:latest python3 /script/trim_fastq.py \
+      -p1 /raw_data/SRR20696400_1.fastq.gz -p2 /raw_data/SRR20696400_2.fastq.gz \
       -a /reference/adapter.fasta \
       -i /reference/NC_045512.2 -b /reference/ARTICv4.bed -r /reference/NC_045512.2.fa \
       -g /reference/NC_045512.2.gff3 -o /outdir/ -p SRR20696400
