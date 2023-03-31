@@ -12,7 +12,7 @@
 
 #.  usr guide
 
-**step1**
+**step1:Preprocessing sequencing data**
 
         #. quality control
         #. mapping reference
@@ -25,5 +25,5 @@
         **python3 script/trim_fastq.py**
 
 
-**step2**
+**step2:**
 
