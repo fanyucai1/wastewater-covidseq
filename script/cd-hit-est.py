@@ -20,5 +20,5 @@ if not os.path.exists(args.outdir):
 # Dezordi F Z, Resende P C, Naveca F G, et al. Unusual SARS-CoV-2 intrahost diversity reveals lineage superinfection[J]. Microbial Genomics, 2022, 8(3).
 # 99.8% sequence identity
 out=args.outdir+"/"+args.prefix
-cmd="cd-hit-est -i %s -o %s.fasta -c %s"%(args.fna,out,args.identify)
+cmd="cd-hit-est -i %s -o %s.fna -c %s"%(args.fna,out,args.identify)
 subprocess.check_call(cmd,shell=True)
