@@ -11,6 +11,31 @@ directory
 
 #.  download test data: *test_data/*
 
+
+build reference
+++++++++++++++++++++++
+`Kraken 2 Refseq indexes <https://benlangmead.github.io/aws-indexes/k2>`_ ::
+
+    axel -n20 https://genome-idx.s3.amazonaws.com/kraken/k2_pluspfp_20230314.tar.gz
+    tar xzvf k2_pluspfp_20230314.tar.gz
+
+`ARTIC bed <https://github.com/CFSAN-Biostatistics/C-WAP/tree/main/covidRefSequences>`_
+
+`NC_045512.2 <https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2>`_ ::
+
+    bowtie2-build /reference/NC_045512.2.fa /reference/NC_045512.2
+    samtools faidx /reference/NC_045512.2.fa
+
+**select GISAID sequence and build kallisto index** ::
+
+    python3 script/select_GISAID.py -m GISAID_metadata.tsv -c core.list -v voc.txt -o ./ -n 10
+
+    upload sequence id to GISAID to download fasta sequence
+
+    python3 script/cd-hit-est.py -f sequence.fna -c 0.995 -o ./ -p test
+
+    kallisto index -i sequences.kallisto_idx test.fna
+
 usr guide
 ++++++++++++++++++
 
