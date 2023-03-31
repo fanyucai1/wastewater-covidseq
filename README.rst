@@ -56,7 +56,7 @@ shell script ::
 
 **step3: Use kallisto to predict abundance per lineage**
 
-    **python3 script/kallisto.py
+    **python3 script/kallisto.py**
 
 shell script ::
 
