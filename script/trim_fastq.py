@@ -51,7 +51,7 @@ print(cmd)
 subprocess.check_call(cmd,shell=True)
 
 # align reads with bowtie2 and sort bam with samtools
-cmd="bowtie2 --threads %s -x %s -1 %s_1.fastq.gz -2 %s_2.fastq.gz -S %s.aligned.sam | tee %s.bowtie2.stdout && rm -rf %s_1.fastq.gz %s_2.fastq.gz"%(args.thread,args.index,out,out,out,out,out,out)
+cmd="bowtie2 --threads %s -x %s -1 %s_1.fastq.gz -2 %s_2.fastq.gz -S %s.aligned.sam && rm -rf %s_1.fastq.gz %s_2.fastq.gz"%(args.thread,args.index,out,out,out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
