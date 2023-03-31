@@ -15,6 +15,7 @@
     mafft
     iqtree
     jvarkit
+    freyja
  **python3 module** ::
 
         seaborn
