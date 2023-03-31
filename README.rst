@@ -8,4 +8,4 @@
 
 5.  **测试数据准备:** test_data/
 
-5.  **测试shell脚本:**   shell/
+6.  **测试shell脚本:**   shell/
