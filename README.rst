@@ -67,10 +67,10 @@ shell script ::
 
 shell script ::
 
-    docker run -v /staging3/fanyucai/waste_water/reference:/reference \
-    -v /staging3/fanyucai/waste_water/script/:/script \
-    -v /staging3/fanyucai/waste_water/kallisto/:/outdir/ \
-    -v /staging3/fanyucai/waste_water/outdir/pre_process:/raw_data/ \
+    docker run -v /path/to/reference:/reference \
+    -v /path/to/script/:/script \
+    -v /path/to/outdir/kallisto/:/outdir/ \
+    -v /pat/to/outdir/pre_process:/raw_data/ \
     waste_water:latest python3 /script/kallisto.py \
     -f /raw_data/SRR20696400.resorted.fastq -i /reference/sequences.kallisto_idx \
     -o /outdir/ -p SRR20696400
