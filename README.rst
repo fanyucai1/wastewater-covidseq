@@ -26,15 +26,15 @@ build reference
     bowtie2-build /reference/NC_045512.2.fa /reference/NC_045512.2
     samtools faidx /reference/NC_045512.2.fa
 
-select GISAID sequence and build kallisto index
-============================================================
-::
+select GISAID sequence ::
 
     python3 script/select_GISAID.py -m GISAID_metadata.tsv -c reference/core.list -v voc.txt -o reference/ -n 10
 
-    #upload sequence id to GISAID to download fasta sequence
+upload sequence id to GISAID to download fasta sequence ::
 
     python3 script/cd-hit-est.py -f reference/sequence.fna -c 0.995 -o reference/ -p test
+
+ build kallisto index ::
 
     kallisto index -i reference/sequences.kallisto_idx reference/test.fna
 
