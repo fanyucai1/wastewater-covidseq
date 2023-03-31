@@ -11,6 +11,9 @@ parser.add_argument("-r","--ref",help="reference sequence,fasta",required=True)
 parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftime("%Y-%m-%d"))
 parser.add_argument("--barcode",help="usher_barcodes.csv,download:https://github.com/andersen-lab/Freyja-data",required=True)
 parser.add_argument("--meta",help="curated_lineages.json,download:https://github.com/andersen-lab/Freyja-data",required=True)
+parser.add_argument("--minq",help="Minimum base quality score",default=20,type=int)
+parser.add_argument("--eps",help="minimum abundance to include",default=0.001,type=float)
+parser.add_argument("--nb",help="number of bootstraps",default=1000,type=int)
 parser.add_argument("-o",help="output directory",default=os.getcwd())
 args=parser.parse_args()
 
@@ -24,11 +27,13 @@ if not os.path.exists(args.outdir):
     subprocess.check_call("mkdir -p %s"%(args.outdir),shell=True)
 out=args.outdir+"/"+args.prefix
 
+
 # freyjaVariantCaller
 # https://github.com/CFSAN-Biostatistics/C-WAP/blob/main/startWorkflow.nf
 # barcode and meta file download link:https://github.com/andersen-lab/Freyja-data
+
+#Usage: freyja variants [OPTIONS] BAMFILE
 '''
-Usage: freyja variants [OPTIONS] BAMFILE
 
 Options:
   --ref PATH       Reference
@@ -39,12 +44,12 @@ Options:
   --help           Show this message and exit.
 '''
 
-cmd="freyja variants %s --variants %s.freyja.variants.tsv --depths %s.freyja.depths.tsv --ref %s"%(args.bam,out,out,args.reference)
+cmd="freyja variants %s --variants %s.freyja.variants.tsv --depths %s.freyja.depths.tsv --ref %s --minq %s"%(args.bam,out,out,args.reference,args.minq)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
+#Usage: freyja demix [OPTIONS] VARIANTS DEPTHS
 '''
-Usage: freyja demix [OPTIONS] VARIANTS DEPTHS
 
 Options:
   --eps FLOAT       minimum abundance to include
@@ -58,8 +63,8 @@ Options:
   --help            Show this message and exit.
 '''
 
-cmd="freyja demix %s.freyja.variants.tsv %s.freyja.depths.tsv --output %s.freyja.demix --confirmedonly"%(out,out,out)
-cmd+="--barcodes %s --meta %s --eps 0.0001 && "%(args.barcode,args.meta)
+cmd="freyja demix %s.freyja.variants.tsv %s.freyja.depths.tsv --barcodes %s --meta %s --eps %s --output %s.freyja.demix --confirmedonly"%(out,out,args.barcode,args.meta,args.eps,out)
+subprocess.check_call(cmd,shell=True)
 
 #Usage: freyja boot [OPTIONS] VARIANTS DEPTHS
 '''
@@ -75,29 +80,6 @@ Options:
   --wgisaid           larger library with non-public lineages
   --help              Show this message and exit.
 '''
-cmd+="freyja boot %s.freyja.variants.tsv %s.freyja.depths.tsv --nt 24 --nb 1000 --boxplot pdf --output_base %s.freyja_boot"%(out,out,out)
+cmd="freyja boot %s.freyja.variants.tsv %s.freyja.depths.tsv --nt 24 --nb %s --boxplot pdf --output_base %s.freyja_boot --eps %s"%(out,out,out,args.nb,args.eps)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
-
-'''
-Usage: freyja aggregate [OPTIONS] RESULTS
-
-Options:
-  --ext TEXT     file extension option
-  --output PATH  Output file
-  --help         Show this message and exit.
-'''
-
-'''
-Usage: freyja plot [OPTIONS] AGG_RESULTS
-
-Options:
-  --lineages
-  --times TEXT
-  --interval TEXT
-  --colors TEXT         path to csv of hex codes
-  --mincov FLOAT        min genome coverage included
-  --output TEXT         Output file
-  --windowsize INTEGER
-  --help                Show this message and exit.
-'''
