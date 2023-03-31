@@ -27,6 +27,8 @@
 
 #. build docker shell script ::
 
+    docker rmi -f covlineages/pangolin:latest
+    docker rmi -f waste_water:latest
     docker build -t waste_water ./
     docker push waste_water
 
