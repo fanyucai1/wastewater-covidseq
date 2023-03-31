@@ -1,11 +1,29 @@
-1.  **关于学习笔记:** paper/
+#.  learn konwledge: *paper/*
 
-2.  **软件环境搭建:** Docker/
+#.  build docker image: *Docker/*
 
-3.  **分析脚本:**  script/
+#.  analysis script:  *script/*
 
-4.  **参考数据库准备:**    reference/
+#.  prepare reference dataset: *reference/*
 
-5.  **测试数据准备:** test_data/
+#.  download test data: *test_data/*
 
-6.  **测试shell脚本:**   shell/
+#.  test shell script: *shell/*
+
+#.  usr guide
+
+**step1**
+
+        #. quality control
+        #. mapping reference
+        #. trim primers、remove soft-clipped primers
+        #. calculate depth
+        #. restore fastq
+        #. variantCalling
+        #. consence sequence and determine the predominant lineage
+
+        **python3 script/trim_fastq.py**
+
+
+**step2**
+
