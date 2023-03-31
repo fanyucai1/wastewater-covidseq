@@ -31,4 +31,3 @@
     docker rmi -f waste_water:latest
     docker build -t waste_water ./
     docker push waste_water
-

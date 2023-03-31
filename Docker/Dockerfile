@@ -6,7 +6,7 @@ RUN cd /software && tar xjvf bcftools-1.17.tar.bz2 && cd bcftools-1.17 && ./conf
 RUN mkdir -p /root/nextclade/ && mkdir -p /root/ref_fasta && mkdir -p /software /raw_data /script /outdir /reference/ /index/
 COPY jvarkit.jar /software/
 RUN conda update -n base -c defaults conda
-RUN conda install -c bioconda ivar=1.3 nextclade trimmomatic bowtie2 kallisto minimap2 bbmap mafft iqtree fastp
+RUN conda install -c bioconda ivar=1.3 nextclade trimmomatic bowtie2 kallisto minimap2 bbmap mafft iqtree fastp bwa
 RUN conda install -c agbiome cdhit
 RUN ln -s /opt/conda/bin/nextclade /root/nextclade/nextclade
 RUN pip3 install seaborn matplotlib numpy pysam pandas
