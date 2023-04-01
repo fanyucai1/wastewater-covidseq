@@ -72,7 +72,7 @@ subprocess.check_call(cmd,shell=True)
 # source activate && conda deactivate
 cmd="/software/samtools-v1.17/bin/samtools sort -o %s.soft.clipped.sort.bam %s.soft.clipped.bam && " \
     "java -jar /software/jvarkit.jar biostar84452 --samoutputformat BAM %s.soft.clipped.sort.bam -o %s.clipped.bam && " \
-    "samtools sort -o %s.trimmed.bam %s.clipped.bam && rm -rf %s.clipped.bam"%(out,out,out,out,out,out,out)
+    "samtools sort -o %s.trimmed.bam %s.clipped.bam && rm -rf %s.clipped.bam && cd %s && samtools index %s.trimmed.bam"%(out,out,out,out,out,out,out,args.outdir,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
