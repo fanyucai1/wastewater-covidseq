@@ -26,3 +26,5 @@ args.index=os.path.abspath(args.index)
 cmd="kallisto quant --plaintext -t 24 -i %s -o %s --single -l 300 -s 50  %s"%(args.index,args.outdir,args.fastq)
 subprocess.check_call(cmd,shell=True)
 print("\nRun Done.")
+
+#####
