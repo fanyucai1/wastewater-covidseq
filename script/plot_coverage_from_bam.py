@@ -1,8 +1,18 @@
+import os
 import pysam
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
-import subprocess
+import argparse
+import time
+
+parser=argparse.ArgumentParser("")
+parser.add_argument("-b","--bam",help="bam file",required=True)
+parser.add_argument("-o","--outdir",help="output directory",default=os.getcwd())
+parser.add_argument("-p","--prefix",help="prefix of output",required=True)
+parser.add_argument("--chr",help="chrome name")
+args=parser.parse_args()
+
 
 
 # 打开BAM文件

@@ -16,7 +16,7 @@ parser.add_argument("-a","--adapter",help="fasta file adapter sequence",required
 parser.add_argument("-i","--index",help="prefix of covidRefSequences wuhan bowtie2 index",required=True)
 parser.add_argument("-r","--reference",help="reference fasta sequence:NC_045512.2")
 parser.add_argument("-g","--gff",help="gff file:NC_045512.2")
-parser.add_argument("-t","--thread",help="number threads",type=int,default=20)
+parser.add_argument("-t","--thread",help="number threads",type=int,default=24)
 parser.add_argument("-b","--bed",help="primer bed file",required=True)
 parser.add_argument('--min_base_qual', required=False, type=int, help="Minimum Base Quality for consensus sequence",default=20)
 parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftime("%Y-%m-%d"))
@@ -51,30 +51,25 @@ print(cmd)
 subprocess.check_call(cmd,shell=True)
 
 # align reads with bowtie2 and sort bam with samtools
-cmd="bowtie2 --threads %s -x %s -1 %s_1.fastq.gz -2 %s_2.fastq.gz -S %s.aligned.sam && rm -rf %s_1.fastq.gz %s_2.fastq.gz"%(args.thread,args.index,out,out,out,out,out)
-print(cmd)
-subprocess.check_call(cmd,shell=True)
-
-cmd="samtools sort %s.aligned.sam -o %s.sorted.bam -@ %s && samtools index %s.sorted.bam && rm -rf %s.aligned.sam"%(out,out,args.thread,out,out)
+cmd="bowtie2 --threads %s -x %s -1 %s_1.fastq.gz -2 %s_2.fastq.gz |samtools view -bh |samtools sort > %s.bam && samtools index %s.bam && rm -rf %s_1.fastq.gz %s_2.fastq.gz"%(args.thread,args.index,out,out,out,out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
 # trim primers with ivar (soft clipping)
 # https://andersen-lab.github.io/ivar/html/manualpage.html
 # -e    Include reads with no primers
-cmd="ivar trim -e -i %s.sorted.bam -b %s -p %s.soft.clipped | tee %s.ivar.stdout && rm -rf %s.sorted.bam %s.sorted.bam.bai"%(out,args.bed,out,out,out,out)
+cmd="ivar trim -e -i %s.bam -b %s -p %s.soft.clipped | tee %s.ivar.stdout && rm -rf %s.bam %s.bam.bai"%(out,args.bed,out,out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
-
 
 ## remove soft-clipped primers
 #https://jvarkit.readthedocs.io/en/latest/Biostar84452/
 # source activate && conda deactivate
-cmd="/software/samtools-v1.17/bin/samtools sort -o %s.soft.clipped.sort.bam %s.soft.clipped.bam && " \
-    "java -jar /software/jvarkit.jar biostar84452 --samoutputformat BAM %s.soft.clipped.sort.bam -o %s.clipped.bam && " \
-    "samtools sort -o %s.trimmed.bam %s.clipped.bam && rm -rf %s.clipped.bam && cd %s && samtools index %s.trimmed.bam"%(out,out,out,out,out,out,out,args.outdir,out)
+cmd="java -jar /software/jvarkit.jar biostar84452 --samoutputformat BAM < samtools sort %s.soft.clipped.bam " \
+    "|samtools sort >%s.trimmed.bam && cd %s && samtools index %s.trimmed.bam && rm %s.soft.clipped.bam" %(out,out,args.outdir,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
+
 
 # extract fastqs
 # https://www.htslib.org/doc/samtools-fasta.html
@@ -85,7 +80,7 @@ subprocess.check_call(cmd,shell=True)
 # Generate Pile-Up and variantCalling
 # https://github.com/CFSAN-Biostatistics/C-WAP/blob/main/startWorkflow.nf
 # -m    Minimum read depth to call variants (Default: 10)
-cmd="/software/samtools-v1.17/bin/samtools mpileup -A -aa -d 0 -Q 0 -o %s.pile.up --reference %s %s.soft.clipped.sort.bam"%(out,args.reference,out)
+cmd="/software/samtools-v1.17/bin/samtools mpileup -A -aa -d 0 -Q 0 -o %s.pile.up --reference %s %s.trimmed.bam"%(out,args.reference,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 cmd="cat %s.pile.up | ivar variants -p %s.rawVarCalls -g %s -r %s -m 10"%(out,out,args.gff,args.reference)
@@ -112,8 +107,5 @@ subprocess.check_call(cmd,shell=True)
 # "-J Include reads with deletions in depth computation."
 # "-q only count reads with base quality greater than or equal to INT"
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
-cmd="/software/samtools-v1.17/bin/samtools depth -J -d 0 -Q 0 -q %s -aa %s.soft.clipped.sort.bam >%s.depth.txt"%(args.min_base_qual,out,out)
+cmd="/software/samtools-v1.17/bin/samtools depth -J -d 0 -Q 0 -q %s -aa %s.trimmed.bam >%s.depth.txt"%(args.min_base_qual,out,out)
 subprocess.check_call(cmd,shell=True)
-
-
-
