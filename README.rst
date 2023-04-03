@@ -100,5 +100,7 @@ shell script ::
     -v /pat/to/outdir/pre_process:/raw_data/ \
     waste_water:latest python3 /script/kallisto.py \
     -f /raw_data/SRR20696400.resorted.fastq -i /reference/sequences.kallisto_idx \
-    -o /outdir/ -p SRR20696400
+    -o /outdir/ -p SRR20696400 \
+    --fna /reference/gisaid_hcov-19_2023_03_16_03.fasta \
+    --meta /reference/2023-03-16.metadata.csv
 
