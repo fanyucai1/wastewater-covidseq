@@ -1,28 +1,29 @@
 # Email:yucai.fan@illumina.com
-# 2023.03.31-2023.04.31 version:1.0
+# 2023.03.31-2023.04.3 version:1.0
 
 import os
 import subprocess
 import argparse
-
+import time
 
 parser=argparse.ArgumentParser("predict abundance per lineage using kallisto\n")
 parser.add_argument("-f","--fastq",help="fastq files not contains primer",required=True)
-parser.add_argument("-p","--prefix",help="prefix of output",required=True)
+parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftime("%Y-%m-%d"))
 parser.add_argument("-o","--outdir",help="output directory",required=True)
 parser.add_argument("-m","--meta",help="meta file download from GIS",required=True)
 parser.add_argument("-f","--fna",help="fasta file download from fasta",required=True)
 parser.add_argument("-i","--index",help="kallisto index",required=True)
-
 args=parser.parse_args()
 
 args.fastq=os.path.abspath(args.fastq)
 args.outdir=os.path.abspath(args.outdir)
-out=args.outdir+"/qc/"+args.prefix
+args.meta=os.path.abspath(args.meta)
+args.fna=os.path.abspath(args.fna)
+args.index=os.path.abspath(args.index)
+
 if not os.path.exists(args.outdir):
     subprocess.check_call("mkdir -p %s"%(args.outdir),shell=True)
-
-args.index=os.path.abspath(args.index)
+out=args.outdir+"/"+args.prefix
 
 #https://pachterlab.github.io/kallisto/manual
 #output name: abundance.tsv
