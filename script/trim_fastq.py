@@ -65,11 +65,14 @@ subprocess.check_call(cmd,shell=True)
 ## remove soft-clipped primers
 #https://jvarkit.readthedocs.io/en/latest/Biostar84452/
 # source activate && conda deactivate
-cmd="java -jar /software/jvarkit.jar biostar84452 --samoutputformat BAM < samtools sort %s.soft.clipped.bam " \
-    "|samtools sort >%s.trimmed.bam && cd %s && samtools index %s.trimmed.bam && rm %s.soft.clipped.bam" %(out,out,args.outdir,out,out)
+cmd ="/software/samtools-v1.17/bin/samtools sort %s.soft.clipped.bam -o %s.soft.clipped.sort.bam"%(out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
+cmd="java -jar /software/jvarkit.jar biostar84452 --samoutputformat BAM %s.soft.clipped.sort.bam |samtools sort >%s.trimmed.bam " \
+    "&& cd %s && samtools index %s.trimmed.bam"%(out,out,args.outdir,out)
+print(cmd)
+subprocess.check_call(cmd,shell=True)
 
 # extract fastqs
 # https://www.htslib.org/doc/samtools-fasta.html
