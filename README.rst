@@ -11,7 +11,6 @@ directory
 
 #.  download test data: *test_data/*
 
-
 build reference
 ++++++++++++++++++++++
 `Kraken 2 Refseq indexes <https://benlangmead.github.io/aws-indexes/k2>`_ ::
@@ -74,7 +73,6 @@ associated barcodes: `usher_barcodes.csv <https://github.com/andersen-lab/Freyja
 the most recent metadata: `curated_lineages.json <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
 
     **python3 script/freyja.py**
-
 
 shell script ::
 
