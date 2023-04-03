@@ -80,7 +80,7 @@ shell script ::
     -v /path/to/script/:/script \
     -v /path/to/outdir/freyja:/outdir/ \
     -v /path/to/outdir/pre_process/:/raw_data/ \
-    waste_water:latest python3 /script/freyja.py -b /raw_data/SRR20696400.trimmed.bam \
+    waste_water:latest python3 /script/freyja.py -b /raw_data/SRR20696400.soft.clipped.sort.bam \
     -r /reference/NC_045512.2.fa \
     --barcode /reference/usher_barcodes.csv  \
     --meta /reference/curated_lineages.json \
@@ -97,7 +97,8 @@ shell script ::
     -v /path/to/outdir/kallisto/:/outdir/ \
     -v /pat/to/outdir/pre_process:/raw_data/ \
     waste_water:latest python3 /script/kallisto.py \
-    -f /raw_data/SRR20696400.resorted.fastq -i /reference/sequences.kallisto_idx \
+    -p1 /raw_data/SRR20696400.R1.fq -p2 /raw_data/SRR20696400.R2.fq \
+    -i /reference/sequences.kallisto_idx \
     -o /outdir/ -p SRR20696400 \
     --fna /reference/gisaid_hcov-19_2023_03_16_03.fasta \
     --meta /reference/2023-03-16.metadata.csv

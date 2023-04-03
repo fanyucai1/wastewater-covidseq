@@ -80,7 +80,7 @@ Options:
   --wgisaid           larger library with non-public lineages
   --help              Show this message and exit.
 '''
-cmd="freyja boot %s.freyja.variants.tsv %s.freyja.depths.tsv --nt 24 --nb %s --boxplot pdf --output_base %s.freyja_boot --eps %s"%(out,out,args.nb,out,args.eps)
+cmd="freyja boot %s.freyja.variants.tsv %s.freyja.depths.tsv --nt 24 --nb %s --output_base %s.freyja_boot --eps %s --barcodes %s --meta %s --boxplot pdf"%(out,out,args.nb,out,args.eps,args.barcode,args.meta)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
