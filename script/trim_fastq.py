@@ -69,21 +69,20 @@ cmd ="/software/samtools-v1.17/bin/samtools sort %s.soft.clipped.bam -o %s.soft.
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
-cmd="java -jar /software/jvarkit.jar biostar84452 --samoutputformat BAM %s.soft.clipped.sort.bam |samtools sort >%s.trimmed.bam " \
-    "&& cd %s && samtools index %s.trimmed.bam"%(out,out,args.outdir,out)
+cmd="java -jar /software/jvarkit.jar biostar84452 --samoutputformat BAM %s.soft.clipped.sort.bam |samtools sort -n >%s.trimmed.bam" %(out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
 # extract fastqs
 # https://www.htslib.org/doc/samtools-fasta.html
-cmd="/software/samtools-v1.17/bin/samtools fastq %s.trimmed.bam >%s.resorted.fastq"%(out,out)
+cmd="/software/samtools-v1.17/bin/samtools fastq -1 %s.R1.fq -2 %s.R2.fq -s %s.singleton.fastq %s.trimmed.bam &>%s.bam2fastq.stdout"%(out,out,out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
 # Generate Pile-Up and variantCalling
 # https://github.com/CFSAN-Biostatistics/C-WAP/blob/main/startWorkflow.nf
 # -m    Minimum read depth to call variants (Default: 10)
-cmd="/software/samtools-v1.17/bin/samtools mpileup -A -aa -d 0 -Q 0 -o %s.pile.up --reference %s %s.trimmed.bam"%(out,args.reference,out)
+cmd="/software/samtools-v1.17/bin/samtools mpileup -A -aa -d 0 -Q 0 -o %s.pile.up --reference %s %s.soft.clipped.sort.bam"%(out,args.reference,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 cmd="cat %s.pile.up | ivar variants -p %s.rawVarCalls -g %s -r %s -m 10"%(out,out,args.gff,args.reference)
@@ -93,7 +92,7 @@ subprocess.check_call(cmd,shell=True)
 # Calculation of the consensus sequence using bcftools
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
 # https://github.com/CFSAN-Biostatistics/C-WAP/blob/main/startWorkflow.nf
-cmd="bcftools mpileup -Ou -f %s %s.trimmed.bam | bcftools call --ploidy 1 -mv -Oz -o %s.calls.vcf.gz"%(args.reference,out,out)
+cmd="bcftools mpileup -Ou -f %s %s.soft.clipped.sort.bam | bcftools call --ploidy 1 -mv -Oz -o %s.calls.vcf.gz"%(args.reference,out,out)
 cmd+=" && bcftools index %s.calls.vcf.gz"%(out)
 cmd+=" && cat %s | bcftools consensus %s.calls.vcf.gz -p %s > %s.consensus.fa"%(args.reference,out,args.prefix,out)
 print(cmd)
@@ -110,5 +109,5 @@ subprocess.check_call(cmd,shell=True)
 # "-J Include reads with deletions in depth computation."
 # "-q only count reads with base quality greater than or equal to INT"
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
-cmd="/software/samtools-v1.17/bin/samtools depth -J -d 0 -Q 0 -q %s -aa %s.trimmed.bam >%s.depth.txt"%(args.min_base_qual,out,out)
+cmd="/software/samtools-v1.17/bin/samtools depth -J -d 0 -Q 0 -q %s -aa %s.soft.clipped.sort.bam >%s.depth.txt"%(args.min_base_qual,out,out)
 subprocess.check_call(cmd,shell=True)

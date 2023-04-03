@@ -7,7 +7,8 @@ import argparse
 import time
 
 parser=argparse.ArgumentParser("predict abundance per lineage using kallisto\n")
-parser.add_argument("-f","--fastq",help="fastq files not contains primer",required=True)
+parser.add_argument("-p1","--pe1",help="R1 fastq files not contains primer",required=True)
+parser.add_argument("-p2","--pe2",help="R2 fastq files not contains primer",required=True)
 parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftime("%Y-%m-%d"))
 parser.add_argument("-o","--outdir",help="output directory",required=True)
 parser.add_argument("--meta",help="meta file download from GIS",required=True)
@@ -15,7 +16,8 @@ parser.add_argument("--fna",help="fasta file download from fasta",required=True)
 parser.add_argument("-i","--index",help="kallisto index",required=True)
 args=parser.parse_args()
 
-args.fastq=os.path.abspath(args.fastq)
+args.pe1=os.path.abspath(args.pe1)
+args.pe2=os.path.abspath(args.pe2)
 args.outdir=os.path.abspath(args.outdir)
 args.meta=os.path.abspath(args.meta)
 args.fna=os.path.abspath(args.fna)
@@ -27,9 +29,8 @@ out=args.outdir+"/"+args.prefix
 
 #https://pachterlab.github.io/kallisto/manual
 #output name: abundance.tsv
-cmd="kallisto quant --plaintext -t 24 -i %s -o %s --single -l 300 -s 50  %s"%(args.index,args.outdir,args.fastq)
-#subprocess.check_call(cmd,shell=True)
-print("\nRun Done.")
+cmd="kallisto quant --plaintext -t 24 -i %s -o %s %s %s"%(args.index,args.outdir,args.pe1,args.pe2)
+subprocess.check_call(cmd,shell=True)
 
 ########################Keep meta and fasta consistent
 seq_id={}
@@ -61,3 +62,4 @@ outfile.close()
 cmd="python3 /script/output_abundances.py -o %s/predictions.tsv " \
     "--metadata %s.kallisto.meta.csv %s/abundance.tsv"%(args.outdir,out,args.outdir)
 subprocess.check_call(cmd,shell=True)
+print("\nRun Done.")
