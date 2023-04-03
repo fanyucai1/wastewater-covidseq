@@ -29,7 +29,7 @@ out=args.outdir+"/"+args.prefix
 
 #https://pachterlab.github.io/kallisto/manual
 #output name: abundance.tsv
-cmd="kallisto quant --plaintext -t 24 -i %s -o %s %s %s"%(args.index,args.outdir,args.pe1,args.pe2)
+cmd="kallisto quant --plaintext -t 36 -i %s -o %s %s %s"%(args.index,args.outdir,args.pe1,args.pe2)
 subprocess.check_call(cmd,shell=True)
 
 ########################Keep meta and fasta consistent
