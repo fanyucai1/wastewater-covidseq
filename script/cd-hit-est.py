@@ -7,7 +7,7 @@ import time
 parser=argparse.ArgumentParser("")
 parser.add_argument("-f","--fna",help="fasta sequence download from GISAID",required=True)
 parser.add_argument("-c","--identify",help="sequence identity threshold, default: 0.995",default=1,type=float,required=True)
-parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftime("%Y-%m-%d"),required=True)
+parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftime("%Y-%m-%d"))
 parser.add_argument("-o","--outdir",help="output directory",default=os.getcwd(),required=True)
 args=parser.parse_args()
 

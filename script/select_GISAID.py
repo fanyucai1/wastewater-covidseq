@@ -16,7 +16,7 @@ import subprocess
 import time
 
 parser=argparse.ArgumentParser("Select meta data from GISAID.\n")
-parser.add_argument("-m","--meta",help="meta file download GISAID.")
+parser.add_argument("-m","--meta",help="meta file download GISAID.",required=True)
 parser.add_argument("-c","--core",help="manually curated sequences ID",required=True)
 parser.add_argument("-v","--voc",help="voc",required=True)
 parser.add_argument("-n","--num",help="limit number sequence per pangolin id,default=10",default=10)

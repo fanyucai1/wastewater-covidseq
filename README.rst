@@ -42,7 +42,9 @@ build reference
 
         python3 script/cd-hit-est.py -f reference/sequence.fna -c 0.995 -o reference/ -p test
 
-Downdload Previous versions of Freyja barcodes and metadata files: `Freyja-data <https://github.com/andersen-lab/Freyja-data>`_
+`Freyja-data <https://github.com/andersen-lab/Freyja-data>`_
+
+    **Downdload Previous versions of Freyja barcodes and metadata files**
 
     associated barcodes: `usher_barcodes.csv <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
 
