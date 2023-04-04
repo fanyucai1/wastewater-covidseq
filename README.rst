@@ -38,6 +38,14 @@ upload sequence id to GISAID to download fasta sequence and build kallisto index
 
     python3 script/cd-hit-est.py -f reference/sequence.fna -c 0.995 -o reference/ -p test
 
+Downdload Previous versions of Freyja barcodes and metadata files: `Freyja-data <https://github.com/andersen-lab/Freyja-data>`_
+
+associated barcodes: `usher_barcodes.csv <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
+
+the most recent metadata: `curated_lineages.json <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
+
+**Only download two files, you can use** `DownGit <https://minhaskamal.github.io/DownGit/#/home>`_
+
 usr guide
 ++++++++++++++++++
 
