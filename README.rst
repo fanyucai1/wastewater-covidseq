@@ -104,5 +104,3 @@ shell script ::
     --meta /reference/2023-03-16.metadata.csv
 
 **step4: statistics result**
-
-    **python3 script/statistics.py -j SRR20696400.json SRR20696400.depth.txt SRR20696400.bam2fastq.stdout ./ test
