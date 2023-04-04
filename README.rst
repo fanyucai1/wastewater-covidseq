@@ -32,7 +32,7 @@ build reference
 
 select GISAID sequence ::
 
-    python3 script/select_GISAID.py -m GISAID_metadata.tsv -c reference/core.list -v voc.txt -o reference/ -n 10
+    python3 script/select_GISAID.py -m reference/GISAID_metadata.tsv -c reference/core.list -v reference/voc.txt -o reference/ -n 10
 
 upload sequence id to GISAID to download fasta sequence and build kallisto index ::
 
