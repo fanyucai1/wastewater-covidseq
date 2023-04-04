@@ -30,13 +30,17 @@ build reference
     bowtie2-build /reference/NC_045512.2.fa /reference/NC_045512.2
     samtools faidx /reference/NC_045512.2.fa
 
-select GISAID sequence ::
+`Prepare GISAID and metadata <https://gisaid.org>`_
 
-    python3 script/select_GISAID.py -m reference/GISAID_metadata.tsv -c reference/core.list -v reference/voc.txt -o reference/ -n 10
+    **select GISAID sequence** ::
 
-upload sequence id to GISAID to download fasta sequence and build kallisto index ::
+        python3 script/select_GISAID.py -m reference/GISAID_metadata.tsv -c reference/core.list -v reference/voc.txt -o reference/ -n 10
 
-    python3 script/cd-hit-est.py -f reference/sequence.fna -c 0.995 -o reference/ -p test
+    **upload sequence id to GISAID to download fasta sequence**
+
+    **select no redundant sequence and build kallisto index** ::
+
+        python3 script/cd-hit-est.py -f reference/sequence.fna -c 0.995 -o reference/ -p test
 
 Downdload Previous versions of Freyja barcodes and metadata files: `Freyja-data <https://github.com/andersen-lab/Freyja-data>`_
 
