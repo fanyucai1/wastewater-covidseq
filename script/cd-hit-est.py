@@ -11,6 +11,7 @@ parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftim
 parser.add_argument("-o","--outdir",help="output directory",default=os.getcwd(),required=True)
 args=parser.parse_args()
 
+start=time.time()
 args.outdir=os.path.abspath(args.outdir)
 args.fna=os.path.abspath(args.fna)
 if not os.path.exists(args.outdir):
@@ -22,3 +23,10 @@ if not os.path.exists(args.outdir):
 out=args.outdir+"/"+args.prefix
 cmd="cd-hit-est -i %s -o %s.fna -c %s"%(args.fna,out,args.identify)
 subprocess.check_call(cmd,shell=True)
+
+"build kallisto index"
+cmd="kallisto index -i %s.kallisto_idx %s.fna"%(out,out)
+subprocess.check_call(cmd,shell=True)
+
+end=time.time()
+print("Elapse time is %g seconds" % (end - start))
