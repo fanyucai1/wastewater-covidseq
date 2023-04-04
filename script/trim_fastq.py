@@ -8,6 +8,7 @@ import os
 import subprocess
 import argparse
 import time
+import json
 
 parser=argparse.ArgumentParser("A pipeline for lineage abundance estimation from wastewater sequencing data.\nEmail:yucai.fan@illumina.com\n\n")
 parser.add_argument("-p1","--pe1",help="R1 fastq",required=True)
@@ -23,6 +24,7 @@ parser.add_argument("-p","--prefix",help="prefix of output",default=time.strftim
 parser.add_argument("-o","--outdir",help="output directory",default=os.getcwd())
 args=parser.parse_args()
 
+start = time.time()
 args.outdir=os.path.abspath(args.outdir)
 args.adapter=os.path.abspath(args.adapter)
 args.pe1=os.path.abspath(args.pe1)
@@ -111,3 +113,39 @@ subprocess.check_call(cmd,shell=True)
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
 cmd="/software/samtools-v1.17/bin/samtools depth -J -d 0 -Q 0 -q %s -aa %s.soft.clipped.sort.bam >%s.depth.txt"%(args.min_base_qual,out,out)
 subprocess.check_call(cmd,shell=True)
+
+##############statistics result###########################
+outfile = open("%s.stat.tsv" % (out), "w")
+outfile.write("SampleID\tRaw_reads\tQ20_rate(%)\tQ30_rate(%)\tClean_reads\tReads aligned(Trimmed primer)\tGenomic coordinates 0X(bp)\tGenomic coordinates <10X(bp)\n")
+with open("%s.json" % (out), "r") as load_f:
+    load_dict = json.load(load_f)
+outfile.write("%s\t%s\t%s\t%s\t"
+              % (args.prefix,int(load_dict['summary']['before_filtering']['total_reads']/2),
+                 format(float(load_dict['summary']['before_filtering']['q20_rate'])*100,".2f"),
+                 format(float(load_dict['summary']['before_filtering']['q30_rate']) * 100, ".2f")))
+outfile.write("%s\t"
+              % (int(load_dict['summary']['after_filtering']['total_reads']/2)))
+
+infile=open("%s.bam2fastq.stdout"%out,"r")
+effect=[]
+for line in infile:
+    line=line.strip()
+    array=line.split(" ")
+    effect.append(int(array[2]))
+outfile.write("%s\t"%(int((effect[1]-effect[0])/2)))
+infile.close()
+infile=open("%s.depth.txt"%out,"r")
+depth=[0,0]
+for line in infile:
+    line=line.strip()
+    array=line.split("\t")
+    if int(array[2])==0:
+        depth[0]+=1
+    if int(array[2])<10:
+        depth[1]+=1
+infile.close()
+outfile.write("%s\t%s"%(depth[0],depth[1]))
+outfile.close()
+end=time.time()
+print("\nPre-process Done.\n")
+print("Elapse time is %g seconds" % (end - start))
