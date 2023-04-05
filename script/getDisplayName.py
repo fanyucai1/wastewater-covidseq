@@ -3,12 +3,12 @@
 
 
 # Translation table for pangolin and WHO names of variants
-pangolin2WHO = {'B.1.1.7': 'Alpha', 'B.1.351': 'Beta', 'P.1': 'Gamma', 'B.1.427': 'Epsilon', 'B.1.429': 'Epsilon',
+pangolin2WHO = {'C.37':'Lambda','B.1.1.7': 'Alpha', 'B.1.351': 'Beta', 'P.1': 'Gamma', 'B.1.427': 'Epsilon', 'B.1.429': 'Epsilon',
                 'B.1.525': 'Eta', 'B.1.526': 'Iota', 'B.1.617.1': 'Kappa', 'B.1.621': 'Mu', 'B.1.621.1': 'Mu',
                 'P.2': 'Zeta', 'B.1.617.3': 'B.1.617.3', 'B.1.617.2': 'Delta', 'AY': 'Delta',
                 'B.1.1.529': 'Omicron', 'BA.1': 'BA.1', 'BA.2': 'BA.2', 'BA.2.12': 'BA.2.12',
-                'BA.2.75':'BA.2.75', 'BA.4.6':'BA.4.6',
-                'BF.7':'BF.7', 'BQ.1':'BQ.1', 'BQ.1.1':'BQ.1.1',
+                'BA.2.75':'BA.2.75', 'BA.4.6':'BA.4.6','BA.2.12.1':'BA.2.12.1',
+                'BF.7':'BF.7', 'BQ.1':'BQ.1', 'BQ.1.1':'BQ.1.1','XBB':'XBB','XBB.1.5':'XBB.1.5',
                 'BA.3': 'BA.3', 'BA.4':'BA.4', 'BA.5':'BA.5', 'wt': 'wt', 'wt-wuhan': 'wt',
                 'BC':'BA.1', 'BG': 'BA.2.12', 'BE':'BA.5',
                 'A.21': 'Bat', 'other': 'Other', 'A': 'wt', 'Error':'Error'}

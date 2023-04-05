@@ -9,6 +9,10 @@ import subprocess
 import argparse
 import time
 import json
+import matplotlib.pyplot as plt
+import numpy as np
+import statistics
+import pandas as pd
 
 parser=argparse.ArgumentParser("A pipeline for lineage abundance estimation from wastewater sequencing data.\nEmail:yucai.fan@illumina.com\n\n")
 parser.add_argument("-p1","--pe1",help="R1 fastq",required=True)
@@ -111,7 +115,7 @@ subprocess.check_call(cmd,shell=True)
 # "-J Include reads with deletions in depth computation."
 # "-q only count reads with base quality greater than or equal to INT"
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
-cmd="/software/samtools-v1.17/bin/samtools depth -J -d 0 -Q 0 -q %s -aa %s.soft.clipped.sort.bam >%s.depth.txt"%(args.min_base_qual,out,out)
+cmd="/software/samtools-v1.17/bin/samtools depth -J -d 8000 -Q 0 -q %s -aa %s.soft.clipped.sort.bam >%s.depth.txt"%(args.min_base_qual,out,out)
 subprocess.check_call(cmd,shell=True)
 
 ##############statistics result###########################
@@ -135,17 +139,45 @@ for line in infile:
 outfile.write("%s\t"%(int((effect[1]-effect[0])/2)))
 infile.close()
 infile=open("%s.depth.txt"%out,"r")
-depth=[0,0]
+cov=[0,0]
 for line in infile:
     line=line.strip()
     array=line.split("\t")
     if int(array[2])==0:
-        depth[0]+=1
+        cov[0]+=1
     if int(array[2])<10:
-        depth[1]+=1
+        cov[1]+=1
 infile.close()
-outfile.write("%s\t%s"%(depth[0],depth[1]))
+outfile.write("%s\t%s"%(cov[0],cov[1]))
 outfile.close()
 end=time.time()
+##############plot coverage###########################
+df = pd.read_csv("%s.depth.txt"%(out),
+                 sep='\t',
+                 # engine='python',
+                 names=["ref", "pos", "depth"]
+                 )
+
+median_depth = statistics.median(df["depth"])
+plt.figure(figsize=[10, 4])
+plt.axhline(median_depth, linestyle='--', color='red', linewidth=1, label="median: %.0f" % median_depth)
+plt.axhline(10, linestyle='--', color='grey', linewidth=1,label="<10X(%s bp)"%(cov[1]))
+
+max = np.max(10000)
+maxlog10 = np.ceil(np.log10(max))
+plt.ylim(top=10 ** maxlog10)
+
+plt.title("Sample: SRR20696400\nAccession: NC_045512.2", fontsize=10, wrap=True)
+plt.xlabel("Position along genome [bp]")
+plt.ylabel("Coverage depth")
+plt.yscale("log")
+plt.margins(x=0.01)
+plt.legend()
+plt.ylim(bottom=1)
+plt.yscale("log")
+plt.plot(df["pos"],df["depth"])
+plt.savefig("%s.coverage.png"%(out), dpi=300)
+
+
 print("\nPre-process Done.\n")
 print("Elapse time is %g seconds" % (end - start))

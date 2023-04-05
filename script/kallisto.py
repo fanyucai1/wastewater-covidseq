@@ -5,6 +5,14 @@ import os
 import subprocess
 import argparse
 import time
+import matplotlib.pyplot as plt
+import sys
+import csv
+import pandas as pd
+import numpy as np
+import pickle
+from getDisplayName import *
+
 
 parser=argparse.ArgumentParser("predict abundance per lineage using kallisto\n")
 parser.add_argument("-p1","--pe1",help="R1 fastq files not contains primer",required=True)
@@ -63,3 +71,54 @@ cmd="python3 /script/output_abundances.py -o %s/predictions.tsv " \
     "--metadata %s.kallisto.meta.csv %s/abundance.tsv"%(args.outdir,out,args.outdir)
 subprocess.check_call(cmd,shell=True)
 print("\nRun Done.")
+
+##############plot kallisto##################
+def drawPieChart(names2percentages, outfilename, title=''):
+    minPlotThreshold = 5  # in %
+
+    # Lookup the display name (e.g. WHO label), cumulate minor subvariants
+    names2pct_combined = {}
+    for (name, freq) in names2percentages.items():
+        dname = getDisplayName(name)
+        if dname != 'Other':
+            if dname in names2pct_combined:
+                names2pct_combined[dname] += freq
+            else:
+                names2pct_combined[dname] = freq
+
+    # Eliminate infrequent variants and cast as two lists to plot
+    percentages2plot = []
+    names2plot = []
+    for (name, pct) in names2pct_combined.items():
+        if pct >= minPlotThreshold:
+            names2plot.append(name)
+            percentages2plot.append(pct)
+
+    # Cumulate all other infrequent variants under "other" category
+    other_pct = 100 - np.sum(percentages2plot)
+    if other_pct > 0.1:
+        names2plot.append('Other')
+        percentages2plot = np.append(percentages2plot, other_pct)
+
+    colors2plot = [getColor(name) for name in names2plot]
+    explosionArray = np.full(len(percentages2plot), 0.07)
+    plt.rcParams.update({'font.size': 12})
+    plt.pie(percentages2plot, labels=names2plot, autopct='%1.1f%%', shadow=False,
+            explode=explosionArray, colors=colors2plot)
+    plt.axis('equal')
+    plt.title(title)
+    plt.savefig(outfilename, dpi=300)
+    plt.close()
+
+names2percentages = {}
+infile=open("%s/predictions.tsv"%out, 'r')
+for line in infile:
+    line=line.strip()
+    if not line.startswith("#"):
+        array=line.split("\t")
+        if array[3]!=0:
+            names2percentages[array[0]]= float(array[3])
+infile.close()
+
+drawPieChart(names2percentages, args.outdir + '/pieChart_kallisto.png',
+             title='Abundance of variants by kallisto')

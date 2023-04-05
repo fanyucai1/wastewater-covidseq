@@ -5,6 +5,16 @@ import os
 import subprocess
 import argparse
 import time
+import matplotlib.pyplot as plt
+import sys
+import csv
+import pandas as pd
+import numpy as np
+import pickle
+from getDisplayName import *
+
+
+
 parser=argparse.ArgumentParser("predict abundance per lineage using freyja\n")
 parser.add_argument("-b","--bam",help="bam file(trimed primer)",required=True)
 parser.add_argument("-r","--ref",help="reference sequence,fasta",required=True)
@@ -87,3 +97,56 @@ subprocess.check_call(cmd,shell=True)
 cmd="python3 /script/parseFreyjaBootstraps.py %s.freyja.demix %s.freyja_boot_lineages.csv %s.freyja_bootstrap.png"%(out,out,out)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
+
+
+def drawPieChart(names2percentages, outfilename, title=''):
+    minPlotThreshold = 5  # in %
+
+    # Lookup the display name (e.g. WHO label), cumulate minor subvariants
+    names2pct_combined = {}
+    for (name, freq) in names2percentages.items():
+        dname = getDisplayName(name)
+        if dname != 'Other':
+            if dname in names2pct_combined:
+                names2pct_combined[dname] += freq
+            else:
+                names2pct_combined[dname] = freq
+
+    # Eliminate infrequent variants and cast as two lists to plot
+    percentages2plot = []
+    names2plot = []
+    for (name, pct) in names2pct_combined.items():
+        if pct >= minPlotThreshold:
+            names2plot.append(name)
+            percentages2plot.append(pct)
+
+    # Cumulate all other infrequent variants under "other" category
+    other_pct = 100 - np.sum(percentages2plot)
+    if other_pct > 0.1:
+        names2plot.append('Other')
+        percentages2plot = np.append(percentages2plot, other_pct)
+
+    colors2plot = [getColor(name) for name in names2plot]
+    explosionArray = np.full(len(percentages2plot), 0.07)
+    plt.rcParams.update({'font.size': 12})
+    plt.pie(percentages2plot, labels=names2plot, autopct='%1.1f%%', shadow=False,
+            explode=explosionArray, colors=colors2plot)
+    plt.axis('equal')
+    plt.title(title)
+    plt.savefig(outfilename, dpi=300)
+    plt.close()
+
+
+# Process the abundance estimates by Freyja
+freyja_raw = pd.read_table("%s.freyja.demix"%out, index_col=0)
+(lineages, abundances, freyja_names) = import_freyja_demix("%s.freyja.demix"%out)
+var_pct = tuple(zip(lineages, abundances))
+
+freyjaHits = {}
+for var in var_pct:
+    name = var[0]
+    pct = 100 * var[1]
+    freyjaHits[name] = pct
+
+drawPieChart(freyjaHits, args.outdir + '/pieChart_freyja.png',
+             title='Abundance of variants by Freyja')
