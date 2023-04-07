@@ -59,14 +59,16 @@ for line in infile:
     if array[4] in seq_id:
         for i in range(0,len(array)):
             if i==0:
-                outfile.write("\n%s"%(seq_id[array[4]]))
+                outfile.write("%s"%(seq_id[array[4]]))
+            elif i==len(array)-1:
+                outfile.write("\t%s\n"%(array[i]))
             else:
-                outfile.write("\t%s"%(array[i]))
+                outfile.write("\t%s" % (array[i]))
     else:
         outfile.write("%s\n"%line)
 infile.close()
 outfile.close()
-###################
+########################
 cmd="python3 /script/output_abundances.py -o %s/predictions.tsv " \
     "--metadata %s.kallisto.meta.csv %s/abundance.tsv"%(args.outdir,out,args.outdir)
 subprocess.check_call(cmd,shell=True)
@@ -111,7 +113,7 @@ def drawPieChart(names2percentages, outfilename, title=''):
     plt.close()
 
 names2percentages = {}
-infile=open("%s/predictions.tsv"%out, 'r')
+infile=open("%s/predictions.tsv"%args.outdir, 'r')
 for line in infile:
     line=line.strip()
     if not line.startswith("#"):

@@ -18,7 +18,6 @@ def main():
     args = parser.parse_args()
 
     df = pd.read_csv(args.metadata, sep='\t', header=0, dtype=str)
-
     if args.out_file:
         outfile = args.out_file
     else:
