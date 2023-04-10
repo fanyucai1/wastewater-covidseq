@@ -122,5 +122,5 @@ for line in infile:
             names2percentages[array[0]]= float(array[3])
 infile.close()
 
-drawPieChart(names2percentages, args.outdir + '/pieChart_kallisto.png',
+drawPieChart(names2percentages, args.outdir + '/%s.pieChart_kallisto.png'%(args.prefix),
              title='Abundance of variants by kallisto')
