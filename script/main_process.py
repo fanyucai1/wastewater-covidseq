@@ -2,7 +2,7 @@ import os
 import sys
 import subprocess
 import argparse
-
+import time
 parser=argparse.ArgumentParser("")
 parser.add_argument("-p1","--pe1",help="R1 fastq",required=True)
 parser.add_argument("-p2","--pe2",help="R2 fastq",required=True)
@@ -17,6 +17,7 @@ parser.add_argument("-m","--meta",help="GISAID meta file",required=True)
 parser.add_argument("-p","--prefix",help="prefix of output",required=True)
 args=parser.parse_args()
 
+start=time.time()
 args.outdir=os.path.abspath(args.outdir)
 args.script=os.path.abspath(args.script)
 args.ref=os.path.abspath(args.ref)
@@ -88,3 +89,5 @@ cmd="docker run -v %s:/reference -v %s:/script \
                                                  args.prefix,fasta_name,meta_name)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
+end=time.time()
+print("Elapse time is %g seconds" % (end - start))
