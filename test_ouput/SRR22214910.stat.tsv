@@ -1,0 +1,2 @@
+SampleID	Raw_reads	Q20_rate(%)	Q30_rate(%)	Clean_reads	Reads aligned(Trimmed primer)	Genomic coordinates 0X(bp)	Genomic coordinates <10X(bp)
+SRR22214910	1957048	98.87	98.65	1930828	1851382	223	331
