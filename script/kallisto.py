@@ -39,7 +39,7 @@ out=args.outdir+"/"+args.prefix
 #output name: abundance.tsv
 cmd="kallisto quant --plaintext -t 36 -i %s -o %s %s %s"%(args.index,args.outdir,args.pe1,args.pe2)
 subprocess.check_call(cmd,shell=True)
-
+subprocess.check_call('mv %s/abundance.tsv %s.abundance.tsv'%(args.outdir,out),shell=True)
 ########################Keep meta and fasta consistent
 seq_id={}
 infile=open(args.fna,"r")
@@ -69,8 +69,8 @@ for line in infile:
 infile.close()
 outfile.close()
 ########################
-cmd="python3 /script/output_abundances.py -o %s/predictions.tsv " \
-    "--metadata %s.kallisto.meta.csv %s/abundance.tsv"%(args.outdir,out,args.outdir)
+cmd="python3 /script/output_abundances.py -o %s.predictions.tsv " \
+    "--metadata %s.kallisto.meta.csv %s.abundance.tsv"%(out,out,args.out)
 subprocess.check_call(cmd,shell=True)
 print("\nRun Done.")
 
@@ -113,7 +113,7 @@ def drawPieChart(names2percentages, outfilename, title=''):
     plt.close()
 
 names2percentages = {}
-infile=open("%s/predictions.tsv"%args.outdir, 'r')
+infile=open("%s.predictions.tsv"%out, 'r')
 for line in infile:
     line=line.strip()
     if not line.startswith("#"):
