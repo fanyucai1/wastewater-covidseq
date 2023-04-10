@@ -148,5 +148,5 @@ for var in var_pct:
     pct = 100 * var[1]
     freyjaHits[name] = pct
 
-drawPieChart(freyjaHits, args.outdir + '/pieChart_freyja.png',
+drawPieChart(freyjaHits, args.outdir + '/%s.pieChart_freyja.png'%(args.prefix),
              title='Abundance of variants by Freyja')
