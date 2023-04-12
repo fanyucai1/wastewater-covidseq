@@ -69,8 +69,7 @@ for line in infile:
 infile.close()
 outfile.close()
 ########################
-cmd="python3 /script/output_abundances.py -o %s.predictions.tsv " \
-    "--metadata %s.kallisto.meta.csv %s.abundance.tsv"%(out,out,args.out)
+cmd="python3 /script/output_abundances.py -o %s.predictions.tsv --metadata %s.kallisto.meta.csv %s.abundance.tsv"%(out,out,out)
 subprocess.check_call(cmd,shell=True)
 print("\nRun Done.")
 
