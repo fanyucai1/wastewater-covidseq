@@ -111,9 +111,3 @@ shell script ::
     -o /outdir/ -p SRR20696400 \
     --fna /reference/gisaid_hcov-19_2023_03_16_03.fasta \
     --meta /reference/2023-03-16.metadata.csv
-
-
-123 456 789 
-
-
-
