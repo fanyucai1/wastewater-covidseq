@@ -15,7 +15,8 @@ RUN conda install -c conda-forge pyvcf
 RUN nextclade dataset get --name='sars-cov-2' --output-dir='/root/nextclade/'
 RUN conda create -n freyja-env
 RUN conda config --add channels conda-forge
-RUN conda install -c bioconda freyja
+RUN conda install conda-libmamba-solver
+RUN conda install -c bioconda freyja=1.4.3
 RUN conda env export > freyja-env.yml
 COPY samtools-1.17.tar.bz2 /software/
 RUN cd /software/ && tar xjvf samtools-1.17.tar.bz2 && cd samtools-1.17 &&  \
