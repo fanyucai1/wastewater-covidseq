@@ -76,7 +76,8 @@ cmd="docker run -v %s/:/reference -v %s:/script \
     -r /reference/NC_045512.2.fa --barcode /reference/usher_barcodes.csv  --meta /reference/curated_lineages.json \
     -o /outdir/ -p %s"%(args.ref,args.script,args.outdir,args.outdir,args.prefix,args.prefix)
 print(cmd)
-subprocess.check_call(cmd,shell=True)
+if not os.path.exists("%s/freyja/%s.freyja_bootstrap.png"%(args.outdir,args.prefix)):
+    subprocess.check_call(cmd,shell=True)
 
 cmd="docker run -v %s:/reference -v %s:/script \
     -v %s/kallisto/:/outdir/ -v %s/pre_process:/raw_data/ \
@@ -88,6 +89,7 @@ cmd="docker run -v %s:/reference -v %s:/script \
                                                  args.prefix,args.prefix,kallisto_name,
                                                  args.prefix,fasta_name,meta_name)
 print(cmd)
-subprocess.check_call(cmd,shell=True)
+if not os.path.exists("%s/kallisto/%s.pieChart_kallisto.png"%(args.outdir,args.prefix)):
+    subprocess.check_call(cmd,shell=True)
 end=time.time()
 print("Elapse time is %g seconds" % (end - start))
