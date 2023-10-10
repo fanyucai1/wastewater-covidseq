@@ -47,10 +47,10 @@ if not os.path.exists(args.outdir):
 # https://github.com/niemasd/SD-COVID-Sequencing/blob/main/scripts/pipeline.sh
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
 
-#输出最短序列30bp
+#输出最短序列30 or 35 bp
 cmd="fastp --in1 %s --out1 %s_1.fastq.gz " \
     "--html %s.html --json %s.json --report_title %s " \
-    "--thread 8 --adapter_fasta %s --length_required 30 --qualified_quality_phred 20"%(args.pe1,out,out,out,out,args.adapter)
+    "--thread 8 --adapter_fasta %s --length_required 35 --qualified_quality_phred 20"%(args.pe1,out,out,out,out,args.adapter)
 print(cmd)
 subprocess.check_call(cmd,shell=True)
 
