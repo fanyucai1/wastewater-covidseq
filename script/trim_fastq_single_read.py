@@ -3,6 +3,9 @@
 ##  Baaijens J A, Zulli A, Ott I M, et al. Lineage abundance estimation for SARS-CoV-2 in wastewater using transcriptome quantification techniques[J]. Genome biology, 2022, 23(1): 236.
 ##  Email:yucai.fan@illumina.com
 ##  2023.03.31 version:1.0
+##  2023.10.10 version:2.0 bug fix:
+    # fastp reads longer than length_limit will be discarded, default 0 means no limitation. (35bp)
+    # plot coverage (sample id)
 
 import os
 import subprocess
