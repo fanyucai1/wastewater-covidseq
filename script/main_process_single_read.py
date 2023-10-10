@@ -78,7 +78,7 @@ if not os.path.exists("%s/freyja/%s.freyja_bootstrap.png"%(args.outdir,args.pref
 
 cmd="docker run -v %s:/reference -v %s:/script \
     -v %s/kallisto/:/outdir/ -v %s/pre_process:/raw_data/ \
-    waste_water:latest python3 /script/kallisto.py \
+    waste_water:latest python3 /script/kallisto_single_read.py \
 	-p1 /raw_data/%s.R1.fq \
     -i /reference/%s \
     -o /outdir/ -p %s --fna /reference/%s --meta /reference/%s"%(args.ref,args.script,
