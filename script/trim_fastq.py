@@ -167,7 +167,7 @@ max = np.max(10000)
 maxlog10 = np.ceil(np.log10(max))
 plt.ylim(top=10 ** maxlog10)
 
-plt.title("Sample: SRR20696400\nAccession: NC_045512.2", fontsize=10, wrap=True)
+plt.title("Sample: %s\nAccession: NC_045512.2", fontsize=10, wrap=True)%(args.prefix)
 plt.xlabel("Position along genome [bp]")
 plt.ylabel("Coverage depth")
 plt.yscale("log")
