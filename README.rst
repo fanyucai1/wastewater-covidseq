@@ -16,6 +16,7 @@ bioinformatics
 
     docker pull fanyucai1/waste_water:latest
 
+
 build reference
 ++++++++++++++++++++++
 `Kraken2 Refseq indexes <https://benlangmead.github.io/aws-indexes/k2>`_ ::
