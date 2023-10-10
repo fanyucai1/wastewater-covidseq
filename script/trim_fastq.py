@@ -116,7 +116,8 @@ subprocess.check_call(cmd,shell=True)
 # "-q only count reads with base quality greater than or equal to INT"
 # https://github.com/niemasd/ViReflow/blob/main/ViReflow.py
 cmd="/software/samtools-v1.17/bin/samtools depth -J -d 8000 -Q 0 -q %s -aa %s.soft.clipped.sort.bam >%s.depth.txt"%(args.min_base_qual,out,out)
-subprocess.check_call(cmd,shell=True)
+if not os.path.exists("%s.depth.tx"%(out)):
+    subprocess.check_call(cmd,shell=True)
 
 ##############statistics result###########################
 outfile = open("%s.stat.tsv" % (out), "w")
