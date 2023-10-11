@@ -141,6 +141,10 @@ for line in infile:
     array=line.split(" ")
     effect.append(int(array[2]))
 outfile.write("%s\t"%(int((effect[1]-effect[0])/2)))
+# A maximum of 1 000 000 reads are kept to limit the computation time of variant calling processes.
+if(int((effect[1]-effect[0])/2)>1000000):
+    subprocess.check_call("seqtk sample -s100 %s.R1.fq 1000000 > %s.sub.R1.fq && "
+                          "seqtk sample -s100 %s.R2.fq 1000000 > %s.sub.R2.fq"%(out,out,out,out),shell=True)
 infile.close()
 infile=open("%s.depth.txt"%out,"r")
 cov=[0,0]
@@ -181,7 +185,5 @@ plt.ylim(bottom=1)
 plt.yscale("log")
 plt.plot(df["pos"],df["depth"])
 plt.savefig("%s.coverage.png"%(out), dpi=300)
-
-
 print("\nPre-process Done.\n")
 print("Elapse time is %g seconds" % (end - start))

@@ -24,3 +24,4 @@ RUN cd /software/ && tar xjvf samtools-1.17.tar.bz2 && cd samtools-1.17 &&  \
     rm -rf samtools-1.17.tar.bz2 bcftools-1.17.tar.bz2 samtools-1.17
 RUN conda install -c bioconda kraken2 krakentools bedtools
 RUN apk add libxau
+RUN conda install -c bioconda seqtk

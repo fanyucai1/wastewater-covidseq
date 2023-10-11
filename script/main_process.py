@@ -79,15 +79,25 @@ print(cmd)
 if not os.path.exists("%s/freyja/%s.freyja_bootstrap.png"%(args.outdir,args.prefix)):
     subprocess.check_call(cmd,shell=True)
 
-cmd="docker run -v %s:/reference -v %s:/script \
-    -v %s/kallisto/:/outdir/ -v %s/pre_process:/raw_data/ \
-    waste_water:latest python3 /script/kallisto.py \
-	-p1 /raw_data/%s.R1.fq -p2 /raw_data/%s.R2.fq \
-    -i /reference/%s \
-    -o /outdir/ -p %s --fna /reference/%s --meta /reference/%s"%(args.ref,args.script,
-                                                 args.outdir,args.outdir,
-                                                 args.prefix,args.prefix,kallisto_name,
-                                                 args.prefix,fasta_name,meta_name)
+if os.path.exists("%s/pre_process/%s.sub.R1.fq"%(args.outdir,args.prefix)):
+    cmd = "docker run -v %s:/reference -v %s:/script \
+            -v %s/kallisto/:/outdir/ -v %s/pre_process:/raw_data/ \
+            waste_water:latest python3 /script/kallisto.py \
+            -p1 /raw_data/%s.sub.R1.fq -p2 /raw_data/%s.sub.R2.fq \
+            -i /reference/%s \
+            -o /outdir/ -p %s --fna /reference/%s --meta /reference/%s" % (args.ref, args.script,
+                                                                           args.outdir, args.outdir,
+                                                                           args.prefix, args.prefix, kallisto_name,args.prefix, fasta_name, meta_name)
+else:
+    cmd="docker run -v %s:/reference -v %s:/script \
+        -v %s/kallisto/:/outdir/ -v %s/pre_process:/raw_data/ \
+        waste_water:latest python3 /script/kallisto.py \
+        -p1 /raw_data/%s.R1.fq -p2 /raw_data/%s.R2.fq \
+        -i /reference/%s \
+        -o /outdir/ -p %s --fna /reference/%s --meta /reference/%s"%(args.ref,args.script,
+                                                     args.outdir,args.outdir,
+                                                     args.prefix,args.prefix,kallisto_name,
+                                                     args.prefix,fasta_name,meta_name)
 print(cmd)
 if not os.path.exists("%s/kallisto/%s.pieChart_kallisto.png"%(args.outdir,args.prefix)):
     subprocess.check_call(cmd,shell=True)
