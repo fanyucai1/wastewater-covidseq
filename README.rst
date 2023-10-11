@@ -122,3 +122,10 @@ waste_water:latest python3 /script/kallisto.py 	\
 -i /reference/2023-10-10.kallisto_idx     \
 -o /outdir/ -p 4 --fna /reference/2023-10-10.fna \
 --meta /reference/2023-10-10.metadata.csv
+
+Other
++++++++++++++
+Out of the 325, 183 (56.3%) samples had >50% sequence coverage of the whole genome (10x depth) and these were used for Freyja analysis.
+
+`Yousif, M., Rachida, S., Taukobong, S. et al. SARS-CoV-2 genomic surveillance in wastewater as a model for monitoring evolution of endemic viruses. Nat Commun 14, 6325 (2023). <https://doi.org/10.1038/s41467-023-41369-5>`_
+
