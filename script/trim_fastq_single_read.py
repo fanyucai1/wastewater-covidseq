@@ -138,6 +138,9 @@ for line in infile:
     array=line.split(" ")
     effect.append(int(array[2]))
 outfile.write("%s\t"%(int((effect[1]-effect[0]))))
+# A maximum of 1 000 000 reads are kept to limit the computation time of variant calling processes.
+if(int(effect[1]-effect[0])>1000000):
+    subprocess.check_call("seqtk sample -s100 %s.R1.fq 1000000 > %s.sub.R1.fq"%(out,out),shell=True)
 infile.close()
 infile=open("%s.depth.txt"%out,"r")
 cov=[0,0]

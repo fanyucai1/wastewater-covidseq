@@ -145,6 +145,7 @@ outfile.write("%s\t"%(int((effect[1]-effect[0])/2)))
 if(int((effect[1]-effect[0])/2)>1000000):
     subprocess.check_call("seqtk sample -s100 %s.R1.fq 1000000 > %s.sub.R1.fq && "
                           "seqtk sample -s100 %s.R2.fq 1000000 > %s.sub.R2.fq"%(out,out,out,out),shell=True)
+
 infile.close()
 infile=open("%s.depth.txt"%out,"r")
 cov=[0,0]
