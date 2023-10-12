@@ -16,18 +16,14 @@ bioinformatics
 
     docker pull fanyucai1/waste_water:latest
 
-
 build reference
 ++++++++++++++++++++++
-`Kraken2 Refseq indexes <https://benlangmead.github.io/aws-indexes/k2>`_ ::
+`Kraken2 Refseq indexes <https://benlangmead.github.io/aws-indexes/k2>`_
+`ARTIC bed <https://github.com/CFSAN-Biostatistics/C-WAP/tree/main/covidRefSequences>`_
+`NC_045512.2 <https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2>`_ ::
 
     axel -n20 https://genome-idx.s3.amazonaws.com/kraken/k2_pluspfp_20230314.tar.gz
     tar xzvf k2_pluspfp_20230314.tar.gz
-
-`ARTIC bed <https://github.com/CFSAN-Biostatistics/C-WAP/tree/main/covidRefSequences>`_
-
-`NC_045512.2 <https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2>`_ ::
-
     bowtie2-build /reference/NC_045512.2.fa /reference/NC_045512.2
     samtools faidx /reference/NC_045512.2.fa
 
@@ -125,10 +121,13 @@ waste_water:latest python3 /script/kallisto.py 	\
 
 Other
 +++++++++++++
-#.  Out of the 325, 183 (56.3%) samples had >50% sequence coverage of the whole genome (10x depth) and these were used for Freyja analysis.
+1.Out of the 325, 183 (56.3%) samples had >50% sequence coverage of the whole genome (10x depth) and these were used for Freyja analysis.
 
 `Yousif, M., Rachida, S., Taukobong, S. et al. SARS-CoV-2 genomic surveillance in wastewater as a model for monitoring evolution of endemic viruses. Nat Commun 14, 6325 (2023). <https://doi.org/10.1038/s41467-023-41369-5>`_
 
-#.  A maximum of 1 000 000 reads are kept to limit the computation time of variant calling processes(kallisto run slowly)
+2.A maximum of 1 000 000 reads are kept to limit the computation time of variant calling processes(kallisto run slowly)
 
 `Kayikcioglu T, Amirzadegan J, Rand H, et al. Performance of methods for SARS-CoV-2 variant detection and abundance estimation within mixed population samples[J]. PeerJ, 2023, 11: e14596. <https://peerj.com/articles/14596/>`_
+
+3.Online services with SARS-CoV-2 genome resources and analytics
+
