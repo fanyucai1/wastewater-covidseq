@@ -19,7 +19,9 @@ bioinformatics
 build reference
 ++++++++++++++++++++++
 `Kraken2 Refseq indexes <https://benlangmead.github.io/aws-indexes/k2>`_
+
 `ARTIC bed <https://github.com/CFSAN-Biostatistics/C-WAP/tree/main/covidRefSequences>`_
+
 `NC_045512.2 <https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2>`_ ::
 
     axel -n20 https://genome-idx.s3.amazonaws.com/kraken/k2_pluspfp_20230314.tar.gz
@@ -34,7 +36,6 @@ build reference
         python3 script/select_GISAID.py -m reference/GISAID_metadata.tsv -c reference/core.list -v reference/voc.txt -o reference/ -n 10
 
     **upload sequence id to GISAID to download fasta sequence**
-
     **select no redundant sequence and build kallisto index** ::
 
         python3 script/cd-hit-est.py -f reference/sequence.fna -c 0.995 -o reference/ -p test
@@ -42,11 +43,8 @@ build reference
 `Freyja-data <https://github.com/andersen-lab/Freyja-data>`_
 
     **Downdload Previous versions of Freyja barcodes and metadata files**
-
     associated barcodes: `usher_barcodes.csv <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
-
     the most recent metadata: `curated_lineages.json <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
-
     **Only download two files, you can use** `DownGit <https://minhaskamal.github.io/DownGit/#/home>`_
 
 usr guide
