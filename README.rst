@@ -36,6 +36,7 @@ build reference
         python3 script/select_GISAID.py -m reference/GISAID_metadata.tsv -c reference/core.list -v reference/voc.txt -o reference/ -n 10
 
     **upload sequence id to GISAID to download fasta sequence**
+
     **select no redundant sequence and build kallisto index** ::
 
         python3 script/cd-hit-est.py -f reference/sequence.fna -c 0.995 -o reference/ -p test
@@ -43,8 +44,11 @@ build reference
 `Freyja-data <https://github.com/andersen-lab/Freyja-data>`_
 
     **Downdload Previous versions of Freyja barcodes and metadata files**
+
     associated barcodes: `usher_barcodes.csv <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
+
     the most recent metadata: `curated_lineages.json <https://github.com/andersen-lab/Freyja-data/blob/main/>`_
+
     **Only download two files, you can use** `DownGit <https://minhaskamal.github.io/DownGit/#/home>`_
 
 usr guide
@@ -107,15 +111,15 @@ shell script ::
     --fna /reference/gisaid_hcov-19_2023_03_16_03.fasta \
     --meta /reference/2023-03-16.metadata.csv
 
-docker run -v /staging3/fanyucai/waste_water/reference:/reference \
--v /staging3/fanyucai/waste_water/script:/script  \
--v /staging3/fanyucai/waste_water/2023.10/test/:/outdir/ \
--v /staging3/fanyucai/waste_water/2023.10/outdir/pre_process:/raw_data/
-waste_water:latest python3 /script/kallisto.py 	\
--p1 /raw_data/4.R1.fq -p2 /raw_data/4.R2.fq     \
--i /reference/2023-10-10.kallisto_idx     \
--o /outdir/ -p 4 --fna /reference/2023-10-10.fna \
---meta /reference/2023-10-10.metadata.csv
+    docker run -v /staging3/fanyucai/waste_water/reference:/reference \
+    -v /staging3/fanyucai/waste_water/script:/script  \
+    -v /staging3/fanyucai/waste_water/2023.10/test/:/outdir/ \
+    -v /staging3/fanyucai/waste_water/2023.10/outdir/pre_process:/raw_data/
+    waste_water:latest python3 /script/kallisto.py 	\
+    -p1 /raw_data/4.R1.fq -p2 /raw_data/4.R2.fq     \
+    -i /reference/2023-10-10.kallisto_idx     \
+    -o /outdir/ -p 4 --fna /reference/2023-10-10.fna \
+    --meta /reference/2023-10-10.metadata.csv
 
 Other
 +++++++++++++
