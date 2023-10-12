@@ -55,7 +55,8 @@ cmd="docker run -v %s:/reference -v %s:/script \
                                                      raw_data,args.outdir,
                                                      R1,R2,adapter_name,bed_name,args.prefix)
 print(cmd)
-subprocess.check_call(cmd,shell=True)
+if not os.path.exists("%s/pre_process/%s.coverage.png"%(args.outdir,args.prefix)):
+    subprocess.check_call(cmd,shell=True)
 
 kallisto_name=os.path.abspath(args.index).split("/")[-1]
 meta_name=os.path.abspath(args.meta).split("/")[-1]
