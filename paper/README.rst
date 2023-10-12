@@ -149,3 +149,13 @@
 25. **Variants located outside of the region targeted by the amplicon panel were filtered out (reference genome positions 1–54 and 29,836–29,903)** ::
 
         Gohl D M, Garbe J, Grady P, et al. A rapid, cost-effective tailed amplicon method for sequencing SARS-CoV-2[J]. BMC genomics, 2020, 21(1): 1-10.
+
+26. **Out of the 325, 183 (56.3%) samples had >50% sequence coverage of the whole genome (10x depth) and these were used for Freyja analysis.** ::
+
+`Yousif, M., Rachida, S., Taukobong, S. et al. SARS-CoV-2 genomic surveillance in wastewater as a model for monitoring evolution of endemic viruses. Nat Commun 14, 6325 (2023). <https://doi.org/10.1038/s41467-023-41369-5>`_
+
+27. **A maximum of 1 000 000 reads are kept to limit the computation time of variant calling processes(kallisto run slowly)** ::
+
+`Kayikcioglu T, Amirzadegan J, Rand H, et al. Performance of methods for SARS-CoV-2 variant detection and abundance estimation within mixed population samples[J]. PeerJ, 2023, 11: e14596. <https://peerj.com/articles/14596/>`_
+
+
