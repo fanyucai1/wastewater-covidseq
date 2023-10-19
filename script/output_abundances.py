@@ -11,7 +11,7 @@ def main():
     parser = argparse.ArgumentParser(description="Plot abundances from file.")
     parser.add_argument('abundances', type=str, help="abundance file")
     parser.add_argument('--metadata', type=str, required=True, help="metadata file")
-    parser.add_argument('-m', dest='min_ab', type=float, default=0.1, help="noise level (% abundance); discard predictions below this threshold")
+    parser.add_argument('-m', dest='min_ab', type=float, default=0.0003, help="noise level (% abundance); discard predictions below this threshold")
     parser.add_argument('--voc', dest='voc', type=str, help="comma-separated list of strains of interest, output abundance for these only")
     parser.add_argument('--voc_file', dest='voc_file', type=str, help="json file with VOC info (see example); alternative to using --voc")
     parser.add_argument('-o', dest='out_file', type=str, help="write output to tsv file")
